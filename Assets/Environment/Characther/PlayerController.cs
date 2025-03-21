@@ -2,68 +2,60 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Speed of horizontal movement
-    public float jumpForce = 10f; // Force applied when jumping
-    private LayerMask groundLayer; // LayerMask to detect ground
-    public float raycastDistance = 0.1f; // Distance to check for ground
+    public float moveSpeed = 5f; // Speed of movement
+    public float minScale = 0.5f; // Minimum scale when far away (up)
+    public float maxScale = 2f; // Maximum scale when close (down)
+    public Transform topPoint; // Reference to the top point
+    public Transform bottomPoint; // Reference to the bottom point
 
     private Rigidbody2D rb;
-    private BoxCollider2D boxCollider;
-    private bool isGrounded;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
 
-        // Initialize the groundLayer using the tag name "Ground"
-        groundLayer = LayerMask.GetMask("Ground");
+        // Disable gravity while keeping the Rigidbody2D as Dynamic
+        rb.gravityScale = 0f;
     }
 
     void Update()
     {
-        // Handle horizontal movement
-        float moveInput = Input.GetAxis("Horizontal"); // A/D or Left/Right Arrow
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        // Handle horizontal and vertical movement
+        float moveInputX = Input.GetAxis("Horizontal"); // A/D or Left/Right Arrow
+        float moveInputY = Input.GetAxis("Vertical");   // W/S or Up/Down Arrow
 
-        // Handle jumping
-        if (Input.GetButtonDown("Jump") && isGrounded) // Spacebar to jump
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
+        Debug.Log($"Move Input X: {moveInputX}, Move Input Y: {moveInputY}");
+
+        // Calculate movement direction
+        Vector2 movement = new Vector2(moveInputX, moveInputY).normalized * moveSpeed;
+
+        // Apply movement to the Rigidbody2D
+        rb.linearVelocity = movement;
+
+        // Adjust scale based on proximity to top and bottom points
+        UpdateScaleBasedOnProximity();
     }
 
-    void FixedUpdate()
+    private void UpdateScaleBasedOnProximity()
     {
-        // Check if the bottom of the player is touching the ground
-        CheckIfGrounded();
-    }
+        // Get the player's current Y position
+        float currentY = transform.position.y;
 
-    private void CheckIfGrounded()
-    {
-        // Get the bottom center of the BoxCollider
-        Vector2 boxColliderCenter = boxCollider.bounds.center;
-        Vector2 boxColliderSize = boxCollider.bounds.size;
-        Vector2 raycastOrigin = new Vector2(boxColliderCenter.x, boxColliderCenter.y - boxColliderSize.y / 2);
+        // Get the Y positions of the top and bottom points
+        float topY = topPoint.position.y;
+        float bottomY = bottomPoint.position.y;
 
-        // Shoot a raycast downward to check for ground
-        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, Vector2.down, raycastDistance, groundLayer);
+        // Calculate the normalized distance between the player and the top/bottom points
+        float normalizedDistance = Mathf.InverseLerp(topY, bottomY, currentY);
 
-        // Check if the raycast hit something
-        isGrounded = hit.collider != null;
-    }
+        // Clamp the normalized distance to ensure it stays within 0 and 1
+        normalizedDistance = Mathf.Clamp01(normalizedDistance);
 
-    private void OnDrawGizmosSelected()
-    {
-        // Draw the raycast in the editor for debugging
-        if (boxCollider != null)
-        {
-            Vector2 boxColliderCenter = boxCollider.bounds.center;
-            Vector2 boxColliderSize = boxCollider.bounds.size;
-            Vector2 raycastOrigin = new Vector2(boxColliderCenter.x, boxColliderCenter.y - boxColliderSize.y / 2);
+        // Interpolate the scale between minScale and maxScale based on normalizedDistance
+        float newScale = Mathf.Lerp(minScale, maxScale, normalizedDistance);
+        Debug.Log($"New Scale: {newScale}");
 
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(raycastOrigin, raycastOrigin + Vector2.down * raycastDistance);
-        }
+        // Apply the new scale to the player
+        transform.localScale = new Vector3(newScale, newScale, 1f);
     }
 }
