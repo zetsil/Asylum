@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5274870051909868791}
   - component: {fileID: 7888764303684838570}
   - component: {fileID: 8823927520022022292}
-  - component: {fileID: 4611004985682740373}
+  - component: {fileID: 3344976231777937385}
   m_Layer: 0
   m_Name: Gigel
   m_TagString: Player
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4122187667030799857}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.15, y: -3.03, z: 0}
+  m_LocalPosition: {x: 0.024, y: 0.162, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1082819495
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5e6becbc2f6ccdb4ebf19cd3873233fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -131,8 +131,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
---- !u!58 &4611004985682740373
-CircleCollider2D:
+  minScale: 0.5
+  maxScale: 2
+  topPoint: {fileID: 0}
+  bottomPoint: {fileID: 0}
+--- !u!61 &3344976231777937385
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -165,8 +169,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.99455833, y: -11.924981}
-  m_Radius: 2.2840285
+  m_Offset: {x: 0.72520256, y: -12.303957}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 24.802656, y: 35.079998}
+    newSize: {x: 24.802656, y: 35.079998}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 5.952338, y: 1.3079176}
+  m_EdgeRadius: 0
 --- !u!1 &9050813368597219340
 GameObject:
   m_ObjectHideFlags: 0
