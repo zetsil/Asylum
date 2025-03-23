@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
         float moveInputX = Input.GetAxis("Horizontal"); // A/D or Left/Right Arrow
         float moveInputY = Input.GetAxis("Vertical");   // W/S or Up/Down Arrow
 
-        Debug.Log($"Move Input X: {moveInputX}, Move Input Y: {moveInputY}");
-
         // Calculate movement direction
         Vector2 movement = new Vector2(moveInputX, moveInputY).normalized * moveSpeed;
 
@@ -53,7 +51,6 @@ public class PlayerController : MonoBehaviour
 
         // Interpolate the scale between minScale and maxScale based on normalizedDistance
         float newScale = Mathf.Lerp(minScale, maxScale, normalizedDistance);
-        Debug.Log($"New Scale: {newScale}");
 
         // Apply the new scale to the player
         transform.localScale = new Vector3(newScale, newScale, 1f);
