@@ -11,7 +11,7 @@ public class LockedState : IDoorState
 {
     public void HandleOpen(Door door)
     {
-        Debug.Log("The door is locked and cannot be opened.");
+        door.HandleLockedState();
     }
 
     public void HandleUnlock(Door door)

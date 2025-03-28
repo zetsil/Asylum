@@ -1,12 +1,31 @@
 using UnityEngine;
-
+using System.Collections;
 public class Door : MonoBehaviour, IObserver
 {
+    [Header("Shake Settings")]
+    [SerializeField] private float shakeDuration = 0.5f;
+    [SerializeField] private float shakeMagnitude = 0.1f;
+    [SerializeField] private AudioClip lockedSound;
+
     private Emitter playerEmitter; // Reference to the player's Emitter
     private IDoorState currentState; // Current state of the door
+    private Vector3 originalPosition;
+    private AudioSource audioSource;
+    private bool isShaking = false;
     
-    public string requiredKeyId = "DoorKey123"; // Key required to unlock the door
+    public string requiredKeyId = "DoorKey1"; // Key required to unlock the door
     private bool isPlayerInTrigger = false; // Track if the player is inside the trigger collide
+
+
+    private void Awake()
+    {
+        originalPosition = transform.position;
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+    }
 
     private void Start()
     {
@@ -47,18 +66,16 @@ public class Door : MonoBehaviour, IObserver
         }
     }
 
-    // Try to open the door
     public void TryOpenDoor()
     {
         if (currentState is LockedState)
         {
-            // if player has a key: ( chek player items)
-            //   currentState.HandleOpen(this);
-            //else
-            //  door is locked
-            Debug.Log("The door is locked.");
-            // Display a message to the player (e.g., UI text)
-            DisplayMessage("The door is locked.");
+            if (ItemManager.Instance.HasItemWithID(requiredKeyId))
+            {
+                currentState.HandleUnlock(this);
+                Debug.Log("Door unlocked with key!");
+            }
+            currentState.HandleOpen(this);
         }
         else
         {
@@ -71,6 +88,13 @@ public class Door : MonoBehaviour, IObserver
     {
         currentState = newState;
     }
+
+    public void HandleLockedState()
+{
+    StartCoroutine(Shake());
+    PlaySound(lockedSound);
+    DisplayMessage("The door is locked. Find a key!");
+}
 
         // Trigger collider methods
     private void OnTriggerEnter2D(Collider2D other)
@@ -98,6 +122,35 @@ public class Door : MonoBehaviour, IObserver
         // You can also display the message in the UI (e.g., a Text component)
         // Example:
         // GameObject.Find("MessageText").GetComponent<Text>().text = message;
+    }
+
+    private IEnumerator Shake()
+    {
+        isShaking = true;
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            elapsed += Time.deltaTime;
+            
+            // Calculate shake offset (2D only - x and y axes)
+            float x = Random.Range(-1f, 1f) * shakeMagnitude;
+            float y = Random.Range(-1f, 1f) * shakeMagnitude;
+            
+            transform.position = originalPosition + new Vector3(x, y, 0);
+            yield return null;
+        }
+
+        transform.position = originalPosition;
+        isShaking = false;
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 
     private void OnDestroy()

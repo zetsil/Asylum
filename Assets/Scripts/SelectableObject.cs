@@ -29,13 +29,13 @@ public class SelectableObject2D : MonoBehaviour
         // Check if the collider has the tag "Player"
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered the trigger of " + gameObject.name);
+            // Debug.Log("Player entered the trigger of " + gameObject.name);
 
             // Apply the highlight effect
             if (spriteRenderer != null)
             {
                 spriteRenderer.color = highlightColor;
-                Debug.Log("Highlight color applied to " + gameObject.name);
+                // Debug.Log("Highlight color applied to " + gameObject.name);
             }
             else
             {

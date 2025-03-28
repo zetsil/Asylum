@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae9a79c20c23564fbb953de63f93e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 900
   minScale: 0.2
   maxScale: 0.4
   topPoint: {fileID: 0}
@@ -112,10 +112,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.2
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 22e8714fbe7c97310bdb95e1d8ff17bd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2

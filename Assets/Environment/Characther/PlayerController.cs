@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Speed of movement
+    public float moveSpeed = 900f; // Speed of movement
     public float minScale = 0.5f; // Minimum scale when far away (up)
     public float maxScale = 2f; // Maximum scale when close (down)
     public Transform topPoint; // Reference to the top point
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         float moveInputY = Input.GetAxis("Vertical");   // W/S or Up/Down Arrow
 
         // Calculate movement direction
-        Vector2 movement = new Vector2(moveInputX, moveInputY).normalized * moveSpeed;
+        Vector2 movement = new Vector2(moveInputX, moveInputY).normalized * moveSpeed * Time.deltaTime;
 
         // Apply movement to the Rigidbody2D
         rb.linearVelocity = movement;
