@@ -26,7 +26,7 @@ public class OpenState : IDoorState
 {
     public void HandleOpen(Door door)
     {
-        Debug.Log("The door is already open go to next room");
+        door.OpenDoor();
     }
 
     public void HandleUnlock(Door door)

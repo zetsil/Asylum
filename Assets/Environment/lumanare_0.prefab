@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 316663371
-  m_SortingLayer: 1
+  m_SortingLayerID: -1528995483
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 2669849762818402600, guid: eea2e56f7a8266bfba76073c9f021c14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   candleLight: {fileID: 9081662241115669211}
-  minIntensity: 1
-  maxIntensity: 2.04
+  minIntensity: 0.2
+  maxIntensity: 0.5
   flickerSpeed: 10.25
 --- !u!1 &1283376270588679175
 GameObject:

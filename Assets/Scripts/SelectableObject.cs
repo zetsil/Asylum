@@ -20,7 +20,6 @@ public class SelectableObject2D : MonoBehaviour
         {
             // Save the original color
             originalColor = spriteRenderer.color;
-            Debug.Log("Original color saved for " + gameObject.name);
         }
     }
 
@@ -42,10 +41,7 @@ public class SelectableObject2D : MonoBehaviour
                 Debug.LogError("SpriteRenderer component is missing on " + gameObject.name);
             }
         }
-        else
-        {
-            Debug.Log("An object without the 'Player' tag entered the trigger of " + gameObject.name);
-        }
+
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -53,22 +49,16 @@ public class SelectableObject2D : MonoBehaviour
         // Check if the collider has the tag "Player"
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player exited the trigger of " + gameObject.name);
-
             // Revert to the original color
             if (spriteRenderer != null)
             {
                 spriteRenderer.color = originalColor;
-                Debug.Log("Original color restored for " + gameObject.name);
             }
             else
             {
                 Debug.LogError("SpriteRenderer component is missing on " + gameObject.name);
             }
         }
-        else
-        {
-            Debug.Log("An object without the 'Player' tag exited the trigger of " + gameObject.name);
-        }
+
     }
 }

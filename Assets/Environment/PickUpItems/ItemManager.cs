@@ -158,4 +158,53 @@ public class ItemManager : MonoBehaviour
         }
         itemIcons.Clear();
     }
+
+    // Gets the first item GameObject with the specified ID (returns null if not found)
+    public GameObject GetItemWithID(string itemID)
+    {
+        foreach (GameObject item in collectedItems)
+        {
+            PickupItem pickupItem = item.GetComponent<PickupItem>();
+            if (pickupItem != null && pickupItem.itemData != null)
+            {
+                if (pickupItem.itemData.getID() == itemID)
+                {
+                    return item;
+                }
+            }
+        }
+        return null;
+    }
+
+    // Removes the first item with the specified ID (returns true if found and removed)
+    public bool RemoveItemWithID(string itemID)
+    {
+        for (int i = 0; i < collectedItems.Count; i++)
+        {
+            PickupItem pickupItem = collectedItems[i].GetComponent<PickupItem>();
+            if (pickupItem != null && pickupItem.itemData != null)
+            {
+                if (pickupItem.itemData.getID() == itemID)
+                {
+                    // Remove from physical items
+                    GameObject itemToRemove = collectedItems[i];
+                    collectedItems.RemoveAt(i);
+                    Destroy(itemToRemove);
+                    
+                    // Remove corresponding UI icon
+                    if (i < itemIcons.Count)
+                    {
+                        Destroy(itemIcons[i].gameObject);
+                        itemIcons.RemoveAt(i);
+                    }
+                    
+                    // Reposition remaining icons
+                    PositionIcons();
+                    
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

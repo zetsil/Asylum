@@ -1,17 +1,24 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 public class Door : MonoBehaviour, IObserver
 {
     [Header("Shake Settings")]
     [SerializeField] private float shakeDuration = 0.5f;
     [SerializeField] private float shakeMagnitude = 0.1f;
     [SerializeField] private AudioClip lockedSound;
+    [SerializeField] private AudioClip openSound;
+
+    [Header("Scene Transition")]
+    public DoorConnection connection;
+    public string doorID; // Must be unique within this scene
+
 
     private Emitter playerEmitter; // Reference to the player's Emitter
     private IDoorState currentState; // Current state of the door
     private Vector3 originalPosition;
     private AudioSource audioSource;
-    private bool isShaking = false;
     
     public string requiredKeyId = "DoorKey1"; // Key required to unlock the door
     private bool isPlayerInTrigger = false; // Track if the player is inside the trigger collide
@@ -68,16 +75,18 @@ public class Door : MonoBehaviour, IObserver
 
     public void TryOpenDoor()
     {
-        if (currentState is LockedState)
+        if (currentState is LockedState) // no key but you  try to open 
         {
             if (ItemManager.Instance.HasItemWithID(requiredKeyId))
             {
                 currentState.HandleUnlock(this);
                 Debug.Log("Door unlocked with key!");
+                ItemManager.Instance.RemoveItemWithID(requiredKeyId);
+                return;
             }
             currentState.HandleOpen(this);
         }
-        else
+        else if(currentState is OpenState) // the door is already unlocked 
         {
             currentState.HandleOpen(this);
         }
@@ -89,12 +98,36 @@ public class Door : MonoBehaviour, IObserver
         currentState = newState;
     }
 
+    public void OpenDoor()
+    {
+        if (connection != null)
+        {
+            SceneTransitionManager.Instance.SetTransitionData(
+                new DoorData(
+                    SceneManager.GetActiveScene().name,
+                    doorID,
+                    connection.toDoor.sceneName
+                )
+            );
+            SceneTransitionManager.Instance.LoadScene(connection.toDoor.sceneName);
+        }
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
+
+
     public void HandleLockedState()
-{
-    StartCoroutine(Shake());
-    PlaySound(lockedSound);
-    DisplayMessage("The door is locked. Find a key!");
-}
+    {
+        StartCoroutine(Shake());
+        PlaySound(lockedSound);
+        DisplayMessage("The door is locked. Find a key!");
+    }
 
         // Trigger collider methods
     private void OnTriggerEnter2D(Collider2D other)
@@ -126,7 +159,6 @@ public class Door : MonoBehaviour, IObserver
 
     private IEnumerator Shake()
     {
-        isShaking = true;
         float elapsed = 0f;
 
         while (elapsed < shakeDuration)
@@ -142,15 +174,6 @@ public class Door : MonoBehaviour, IObserver
         }
 
         transform.position = originalPosition;
-        isShaking = false;
-    }
-
-    private void PlaySound(AudioClip clip)
-    {
-        if (clip != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
     }
 
     private void OnDestroy()

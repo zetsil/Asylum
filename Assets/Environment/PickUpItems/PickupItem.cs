@@ -71,6 +71,11 @@ public class PickupItem : MonoBehaviour, IObserver
         // }
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        youCanReachIt = false;
+    }
+
     public void OnSignalReceived(string signal)
     {
         if (requiresKey && signal == requiredKeySignal)
@@ -84,7 +89,6 @@ public class PickupItem : MonoBehaviour, IObserver
         if (youCanReachIt && canBePickedUp && signal == requiredKeySignal){
             Debug.Log("Pick Up!!!");
             this.Pickup();
-
         }
     }
 
