@@ -1,24 +1,45 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SceneTransitionManager : MonoBehaviour
 {
-    public static SceneTransitionManager Instance;
-    
+    private static SceneTransitionManager _instance;
+    public static SceneTransitionManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<SceneTransitionManager>();
+                
+                #if UNITY_EDITOR
+                if (_instance == null && Application.isPlaying)
+                {
+                    Debug.LogWarning("SceneTransitionManager auto-created for editor testing");
+                    GameObject go = new GameObject("SceneTransitionManager (Editor-Temporary)");
+                    _instance = go.AddComponent<SceneTransitionManager>();
+                }
+                #endif
+            }
+            return _instance;
+        }
+    }
+
     private DoorData _currentTransition;
     
     private void Awake()
     {
-        if (Instance == null)
+        // Handle duplicate instances
+        if (_instance != null && _instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
+            Debug.LogWarning($"Duplicate SceneTransitionManager on {gameObject.name} - destroying");
             Destroy(gameObject);
+            return;
         }
+
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     
     public void SetTransitionData(DoorData data)
@@ -28,17 +49,42 @@ public class SceneTransitionManager : MonoBehaviour
     
     public void LoadScene(string sceneName)
     {
+        if (!Application.isPlaying)
+        {
+            Debug.LogError("Cannot load scenes in edit mode!");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            Debug.LogError("Invalid scene name");
+            return;
+        }
+
         StartCoroutine(LoadSceneAsync(sceneName));
     }
     
     private IEnumerator LoadSceneAsync(string sceneName)
     {
-        // Your loading screen/show transition
+        // Show loading screen/transition here
+        Debug.Log($"Loading scene: {sceneName}");
         
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        asyncLoad.allowSceneActivation = false;
         
+        // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
+            // Progress from 0-0.9 (1.0 happens after activation)
+            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+            Debug.Log($"Loading progress: {progress * 100}%");
+            
+            // When loading is almost complete
+            if (asyncLoad.progress >= 0.9f)
+            {
+                asyncLoad.allowSceneActivation = true;
+            }
+            
             yield return null;
         }
         
@@ -47,7 +93,11 @@ public class SceneTransitionManager : MonoBehaviour
     
     private void PositionPlayer()
     {
-        if (_currentTransition == null) return;
+        if (_currentTransition == null)
+        {
+            Debug.LogWarning("No transition data available");
+            return;
+        }
         
         var spawnPoints = FindObjectsOfType<DoorSpawnPoint>();
         DoorSpawnPoint matchingPoint = null;
@@ -68,11 +118,31 @@ public class SceneTransitionManager : MonoBehaviour
             if (player != null)
             {
                 player.transform.position = matchingPoint.transform.position + matchingPoint.spawnOffset;
+                Debug.Log($"Player positioned at door: {matchingPoint.prevDoorID}");
+            }
+            else
+            {
+                Debug.LogWarning("Player object not found in scene");
             }
         }
+        else
+        {
+            Debug.LogWarning($"No matching spawn point found for door {_currentTransition.fromDoorID} from {_currentTransition.fromScene}");
+        }
     }
+
+    #if UNITY_EDITOR
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
+    #endif
 }
 
+[System.Serializable]
 public class DoorData
 {
     public string fromScene;

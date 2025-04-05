@@ -16,4 +16,4 @@ MonoBehaviour:
   _name: Key First Room
   _description: A simple rusty key simple rusty key
   _icon: {fileID: 1095141833252711340, guid: 3a43a06d9bb9a70b5bb08bdac25d285b, type: 3}
-  _isPicked: 1
+  _isPicked: 0

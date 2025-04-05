@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 900f; // Speed of movement
+    public float moveSpeed = 5f; // Speed of movement
     public float minScale = 0.5f; // Minimum scale when far away (up)
     public float maxScale = 2f; // Maximum scale when close (down)
     public Transform topPoint; // Reference to the top point
@@ -18,20 +18,33 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = 0f;
     }
 
-    void Update()
+    // FixedUpdate is called at a fixed interval, ideal for physics calculations
+    void FixedUpdate()
     {
-        // Handle horizontal and vertical movement
+        // --- Physics Movement ---
+        // Handle horizontal and vertical movement input
         float moveInputX = Input.GetAxis("Horizontal"); // A/D or Left/Right Arrow
         float moveInputY = Input.GetAxis("Vertical");   // W/S or Up/Down Arrow
 
-        // Calculate movement direction
-        Vector2 movement = new Vector2(moveInputX, moveInputY).normalized * moveSpeed * Time.deltaTime;
+        // Calculate desired velocity based on input and speed
+        // Normalizing ensures consistent speed regardless of direction (e.g., diagonal)
+        Vector2 desiredVelocity = new Vector2(moveInputX, moveInputY).normalized * moveSpeed;
 
-        // Apply movement to the Rigidbody2D
-        rb.linearVelocity = movement;
+        // Apply movement directly by setting the Rigidbody2D's velocity
+        // The physics engine handles applying this velocity over the fixed time step.
+        // Note: This overrides existing velocity (like from impacts or gravity if applicable).
+        // Consider rb.AddForce() for a different feel that integrates with other forces.
+        rb.linearVelocity = desiredVelocity;
 
+        // --- Other Updates ---
         // Adjust scale based on proximity to top and bottom points
+        // Keep this here if the scale needs to be updated in sync with physics
         UpdateScaleBasedOnProximity();
+    }
+
+    void Update()
+    {
+
     }
 
     private void UpdateScaleBasedOnProximity()

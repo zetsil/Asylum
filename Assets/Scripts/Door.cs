@@ -12,7 +12,9 @@ public class Door : MonoBehaviour, IObserver
 
     [Header("Scene Transition")]
     public DoorConnection connection;
-    public string doorID; // Must be unique within this scene
+    private string doorID; // Must be unique within this scene
+
+    private bool doorIsLocked = false;
 
 
     private Emitter playerEmitter; // Reference to the player's Emitter
@@ -27,7 +29,23 @@ public class Door : MonoBehaviour, IObserver
     private void Awake()
     {
         originalPosition = transform.position;
+
         audioSource = GetComponent<AudioSource>();
+
+        if (connection == null || string.IsNullOrEmpty(connection.doorID))
+        {
+            Debug.LogError("Connection or doorID is null!");
+            // Handle the error case - maybe generate a random ID or disable the component
+            // doorID = GenerateRandomDoorID();
+            // or throw an exception if this should never happen
+            // throw new System.Exception("Invalid door connection");
+        }
+        else
+        {
+            doorID = connection.doorID;
+        }
+
+
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -36,9 +54,8 @@ public class Door : MonoBehaviour, IObserver
 
     private void Start()
     {
-        // Initialize the door to the Closed state
-        currentState = new LockedState(); // here later this will be geting from an scriptableobject
-
+        doorIsLocked = GameStateManager.Instance?.GetOrRegisterObjectState(doorID, connection.locked) ?? connection.locked; // This will now work safely in the editor:
+            
         // Find the player GameObject by tag
         GameObject player = GameObject.FindWithTag("Player");
 
@@ -61,7 +78,18 @@ public class Door : MonoBehaviour, IObserver
         {
             Debug.LogError("Player GameObject not found!");
         }
+
+        if(doorIsLocked)
+        {
+            this.SetState(new LockedState());
+        }
+        else
+        {
+            this.SetState(new OpenState());
+        }
     }
+
+    
 
     // Method to handle the emitted event (implementation of IObserver)
     public void HandleEvent(string message)
@@ -81,6 +109,8 @@ public class Door : MonoBehaviour, IObserver
             {
                 currentState.HandleUnlock(this);
                 Debug.Log("Door unlocked with key!");
+                doorIsLocked = false;
+                GameStateManager.Instance.UpdateObjectState(doorID, doorIsLocked); // change game state 
                 ItemManager.Instance.RemoveItemWithID(requiredKeyId);
                 return;
             }
@@ -129,7 +159,7 @@ public class Door : MonoBehaviour, IObserver
         DisplayMessage("The door is locked. Find a key!");
     }
 
-        // Trigger collider methods
+    // Trigger collider methods
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

@@ -12,6 +12,7 @@ public class PickupItem : MonoBehaviour, IObserver
     private bool isPickedUp = false; // Track pickup state
 
     private bool youCanReachIt = false;
+    private bool IsPicked = false;
 
     [Header("Visual Feedback")]
     public GameObject visualRepresentation;
@@ -21,6 +22,7 @@ public class PickupItem : MonoBehaviour, IObserver
     private Emitter playerEmitter;
     private AudioSource audioSource;
     private Collider2D itemCollider;
+    private string ID = "";
 
     private void Awake()
     {
@@ -32,10 +34,20 @@ public class PickupItem : MonoBehaviour, IObserver
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        ID = itemData.getID();
     }
 
     private void Start()
     {
+        IsPicked = GameStateManager.Instance?.GetOrRegisterObjectState(this.ID, itemData.IsPicked) ??  itemData.IsPicked;
+        if (IsPicked) // this need to change
+        {
+            // Destroy the GameObject if it's already picked.
+            Destroy(gameObject);
+            return; // Exit the function to prevent further initialization.
+        }
+
         // Initialize pickup availability
         canBePickedUp = !requiresKey;
 
@@ -116,13 +128,14 @@ public class PickupItem : MonoBehaviour, IObserver
         itemCollider.enabled = false;
         
         // Mark as picked in the ScriptableObject
-        itemData.SetPickedState(true);
+        // itemData.SetPickedState(true);
         
         // Add to inventory (you would call your inventory system here)
         // InventoryManager.Instance.AddItem(itemData);
         
         // Destroy after sound finishes (or immediately if no sound)
         float destroyDelay = pickupSound != null ? pickupSound.length : 0.1f;
+        GameStateManager.Instance.UpdateObjectState(this.ID, true); // set in game state manager
 
         // Unsubscribe safely
         UnsubscribeFromEmitter();

@@ -18,14 +18,14 @@ public class PickableItem : ScriptableObject
         if (string.IsNullOrEmpty(_id))
         {
             _id = System.Guid.NewGuid().ToString();
-            UnityEditor.EditorUtility.SetDirty(this);
+            // UnityEditor.EditorUtility.SetDirty(this);
         }
         
         // Ensure name is not empty
         if (string.IsNullOrEmpty(_name))
         {
             _name = "New Item";
-            UnityEditor.EditorUtility.SetDirty(this);
+            // UnityEditor.EditorUtility.SetDirty(this);
         }
     }
     #endif
@@ -39,11 +39,21 @@ public class PickableItem : ScriptableObject
         
         _isPicked = picked;
         
-        #if UNITY_EDITOR
-        UnityEditor.EditorUtility.SetDirty(this);
-        #endif
     }
 
+
+    // --- Getter Property for IsPicked ---
+    /// <summary>
+    /// Gets a value indicating whether the item has been picked up.
+    /// </summary>
+    public bool IsPicked
+    {
+        get { return _isPicked; }
+        // Private set could be added if modification should only happen within this class
+        // private set { _isPicked = value; }
+    }
+    // --- End Getter ---
+    
 
     /// <summary>
     /// Resets the item to unpicked state

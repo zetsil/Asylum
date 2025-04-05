@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ebbb578e8bb62518663d39dbb84c3f, type: 3}
-  m_Name: Door1Connection
+  m_Name: DoorHallWayConnection
   m_EditorClassIdentifier: 
-  doorID: FirstRoom
+  doorID: FirstHallWay
   fromDoor:
-    sceneName: FirstLlvRoom
-    doorID: FirstRoom
-    spawnOffset: {x: 2, y: 0, z: 0}
-  toDoor:
     sceneName: FirstHallWay
     doorID: H1
     spawnOffset: {x: 2, y: 0, z: 0}
-  locked: 1
+  toDoor:
+    sceneName: FirstLlvRoom
+    doorID: FirstRoom
+    spawnOffset: {x: 2, y: 0, z: 0}
+  locked: 0
   initialLockedValue: 0
