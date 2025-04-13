@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 407c9050f4de3ea3c93285bc8642db76
+guid: 548322ad19b99c6509c43df8af31a3c0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6697558667110343378
-    second: ThunderSprite_0
+      213: 6409754218213670301
+    second: masaClose_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ThunderSprite_0
+      name: masaClose_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 7016
+        width: 3508
         height: 2480
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d2637f5f1282fc50800000000000000
-      internalID: 6697558667110343378
+      spriteID: d9dff2a408504f850800000000000000
+      internalID: 6409754218213670301
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ThunderSprite_0: 6697558667110343378
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

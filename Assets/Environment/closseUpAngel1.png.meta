@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 407c9050f4de3ea3c93285bc8642db76
+guid: b8feba93603a37b958a410351c774251
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6697558667110343378
-    second: ThunderSprite_0
+      213: -473287209994443170
+    second: closseUpAngel1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ThunderSprite_0
+      name: closseUpAngel1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 7016
-        height: 2480
+        width: 1238
+        height: 1609
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d2637f5f1282fc50800000000000000
-      internalID: 6697558667110343378
+      spriteID: e56ab834acb8e69f0800000000000000
+      internalID: -473287209994443170
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ThunderSprite_0: 6697558667110343378
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
