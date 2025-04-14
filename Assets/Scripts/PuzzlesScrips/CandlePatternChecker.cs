@@ -26,6 +26,7 @@ public class CandlePatternChecker : MonoBehaviour , IObserver
     private Sprite originalSprite;
 
     private bool puzzleTrigered = false;
+    private bool puzzleResolved = false;
     public CanvasFlasher targetFlasher; // Assign in Inspector
 
  
