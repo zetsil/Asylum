@@ -58,28 +58,6 @@ public class CandlePatternChecker : MonoBehaviour , IObserver
         puzzleTrigered = GameStateManager.Instance.GetOrRegisterObjectState(this.puzzleTrigeredID, false);
         puzzleResolved = GameStateManager.Instance.GetOrRegisterObjectState(this.puzzleResolvedID, false);
 
-        if(puzzleTrigered && !puzzleResolved){
-
-             // Change sprite if references exist
-            if (targetSpriteRenderer != null && angelActiveSprite != null)
-            {
-                targetSpriteRenderer.sprite = angelActiveSprite;
-            }
-
-            if (closeUpCanvasImage != null && closeUpAngelSprite != null)
-            {
-                closeUpCanvasImage.sprite = closeUpAngelSprite;
-            }
-
-            // Flip all candles
-            foreach (CandleFlicker candle in candleScripts)
-            {
-                if (candle != null)
-                {
-                    candle.ToggleCandle();
-                }
-            }
-        }
 
         // If the puzzle was previously resolved
         if (puzzleResolved)
@@ -145,6 +123,34 @@ public class CandlePatternChecker : MonoBehaviour , IObserver
                 else
                 {
                     Debug.LogWarning("CandleFlicker script missing on: " + candle.name);
+                }
+            }
+        }
+
+        if(puzzleTrigered && !puzzleResolved){
+
+             // Change sprite if references exist
+            if (targetSpriteRenderer != null && angelActiveSprite != null)
+            {
+                targetSpriteRenderer.sprite = angelActiveSprite;
+            }
+
+            if (closeUpCanvasImage != null && closeUpAngelSprite != null)
+            {
+                closeUpCanvasImage.sprite = closeUpAngelSprite;
+            }
+
+            foreach (GameObject candle in candles){
+                CandelOnOff script = candle.GetComponent<CandelOnOff>();
+                script.enabled = true;
+            }
+
+            // Flip all candles
+            foreach (CandleFlicker candle in candleScripts)
+            {
+                if (candle != null)
+                {
+                    candle.ToggleCandle();
                 }
             }
         }
