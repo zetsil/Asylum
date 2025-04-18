@@ -18,12 +18,23 @@ public class CandlePatternChecker : MonoBehaviour , IObserver
     public SpriteRenderer targetSpriteRenderer;
     public Sprite angelActiveSprite;
     public Image closeUpCanvasImage; // Reference to UI Image component
+    private Sprite originalCloseUpAngelSprite;
     public Sprite closeUpAngelSprite; // New sprite for close-up view
+
+    [Header("Object Visibility")]
+    [Tooltip("GameObject to make invisible at start")]
+    public GameObject angelKey;
+
+    [Tooltip("Collider2D component of the angel object to deactivate when puzzle is resolved")]
+    public Collider2D angelCollider; // New field for the collider
 
 
     private List<CandleFlicker> candleScripts = new List<CandleFlicker>();
     private Emitter playerEmitter;
     private Sprite originalSprite;
+
+    private string puzzleTrigeredID = "PT";
+    private string puzzleResolvedID = "PR";
 
     private bool puzzleTrigered = false;
     private bool puzzleResolved = false;
@@ -37,15 +48,61 @@ public class CandlePatternChecker : MonoBehaviour , IObserver
     [Tooltip("Number of flash pulses")] 
     public int flashCount = 3;
 
-    
-
-
     void Start()
     {
         // get the player emmtter used to remove it onDestroy from observer list
         // This should had been an global thing but I 
         // am too lazy to change it now
+
         GameObject player = GameObject.FindWithTag("Player");
+        puzzleTrigered = GameStateManager.Instance.GetOrRegisterObjectState(this.puzzleTrigeredID, false);
+        puzzleResolved = GameStateManager.Instance.GetOrRegisterObjectState(this.puzzleResolvedID, false);
+
+        if(puzzleTrigered && !puzzleResolved){
+
+             // Change sprite if references exist
+            if (targetSpriteRenderer != null && angelActiveSprite != null)
+            {
+                targetSpriteRenderer.sprite = angelActiveSprite;
+            }
+
+            if (closeUpCanvasImage != null && closeUpAngelSprite != null)
+            {
+                closeUpCanvasImage.sprite = closeUpAngelSprite;
+            }
+
+            // Flip all candles
+            foreach (CandleFlicker candle in candleScripts)
+            {
+                if (candle != null)
+                {
+                    candle.ToggleCandle();
+                }
+            }
+        }
+
+        // If the puzzle was previously resolved
+        if (puzzleResolved)
+        {
+            // Check if angelKey still exists in the scene before activating
+            if (angelKey != null && !angelKey.activeSelf)
+            {
+                angelKey.SetActive(true);
+            }
+
+            // Disable the collider if assigned
+            if (angelCollider != null)
+            {
+                angelCollider.enabled = false;
+            }
+
+        }
+
+         // Hide the specified object at start
+        if (angelKey != null && !puzzleResolved)
+        {
+            angelKey.SetActive(false);
+        }
 
         if (player != null)
         {
@@ -67,6 +124,13 @@ public class CandlePatternChecker : MonoBehaviour , IObserver
             Debug.LogError("Player GameObject not found!");
         }
 
+        // Store the original sprite at start
+        if (targetSpriteRenderer != null)
+        {
+            originalSprite = targetSpriteRenderer.sprite;
+        }
+
+        originalCloseUpAngelSprite = closeUpCanvasImage.sprite;
 
         // Cache all candle scripts at start
         foreach (GameObject candle in candles)
@@ -145,6 +209,7 @@ public class CandlePatternChecker : MonoBehaviour , IObserver
      if (message == "TriggerAngel" && !puzzleTrigered)
         {
             puzzleTrigered = true;
+            GameStateManager.Instance.UpdateObjectState(this.puzzleTrigeredID, true); // set in game state manager
             foreach (GameObject candle in candles){
                 CandelOnOff script = candle.GetComponent<CandelOnOff>();
                 script.enabled = true;
@@ -178,8 +243,51 @@ public class CandlePatternChecker : MonoBehaviour , IObserver
         }
         else if (message == "candelFlip")
         {
-            CheckPatternMatch();
-        }
+            if (CheckPatternMatch() && puzzleTrigered && !puzzleResolved)
+                {
+                    puzzleResolved = true;
+                    GameStateManager.Instance.UpdateObjectState(this.puzzleResolvedID, true); // set in game state manager
+
+                    // Revert to original sprite
+                    if (targetSpriteRenderer != null && originalSprite != null)
+                    {
+                        targetSpriteRenderer.sprite = originalSprite;
+                    }
+                                        
+                    // Trigger flash again
+                    if (targetFlasher != null)
+                    {
+                        targetFlasher.TriggerFlash();
+                    }
+                    
+                    // Make the hidden object visible
+                    if (angelKey != null)
+                    {
+                        angelKey.SetActive(true);
+                    }
+
+                    // Disable collider when puzzle is triggered
+                    if (angelCollider != null)
+                    {
+                        angelCollider.enabled = false;
+                    }
+
+                    closeUpCanvasImage.sprite = originalCloseUpAngelSprite;
+
+                    // Optional: Disable candle interaction after puzzle is solved
+                    foreach (GameObject candle in candles)
+                    {
+                        CandelOnOff script = candle.GetComponent<CandelOnOff>();
+                        if (script != null) script.enabled = false;
+                    }
+                }
+            }else if (message == "ActivateColider"){
+                if (angelCollider != null)
+                    {
+                        angelCollider.enabled = true;
+                    }
+            }
+        
     }
 
 
