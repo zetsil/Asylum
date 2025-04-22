@@ -101,9 +101,7 @@ public class ChatManager : MonoBehaviour, IObserver
     private void DisplayMessage(string message)
     {
         // You can use either approach here:
-        TextWriter.Instance.WriteTextToCanvas(message); // Instant display
-        // or
-        TextWriter.Write(message); // Using static shortcut
+        TextWriter.Type(message); // Instant display
     }
 
 

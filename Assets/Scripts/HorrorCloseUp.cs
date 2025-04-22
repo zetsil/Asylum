@@ -13,16 +13,14 @@ public class HorrorCloseUp : MonoBehaviour, IObserver
     [Tooltip("Whether to hide the canvas when the game starts")]
     public bool startHidden = true;
 
-    [Header("Interaction Settings")]
-    [SerializeField] private LayerMask interactionLayer;
-    [SerializeField] private string activationMessage = "Press E to inspect";
-
     private CanvasGroup canvasGroup;
     private float currentAlpha = 0f;
     private bool isShowing = false;
     private bool isPlayerInRange = false;
     private bool isHiding = false;
     private Emitter playerEmitter;
+    [Tooltip("Dialog event ")]
+    public string dialogEvent = "empty";
 
     void Start()
     {
@@ -140,6 +138,7 @@ public class HorrorCloseUp : MonoBehaviour, IObserver
         if (!isShowing && isPlayerInRange)
         {
             ShowCloseUp();
+            playerEmitter.NotifyObservers(dialogEvent);
         }
         else if(isShowing)
         {

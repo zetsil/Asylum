@@ -115,6 +115,8 @@ public class Door : MonoBehaviour, IObserver
                 return;
             }
             currentState.HandleOpen(this);
+            playerEmitter.NotifyObservers("dia_locked");
+
         }
         else if(currentState is OpenState) // the door is already unlocked 
         {

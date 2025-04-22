@@ -22,6 +22,7 @@ public class CloseUpTableEvent : MonoBehaviour, IObserver // this is same like h
     private bool isPlayerInRange = false;
     private bool isHiding = false;
     private Emitter playerEmitter;
+    public string closeUpDiaEvent = "empty";
 
     void Start()
     {
@@ -139,6 +140,7 @@ public class CloseUpTableEvent : MonoBehaviour, IObserver // this is same like h
         if (!isShowing && isPlayerInRange)
         {
             ShowCloseUp();
+            playerEmitter.NotifyObservers(closeUpDiaEvent);
         }
         else if(isShowing)
         {

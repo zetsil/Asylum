@@ -59,10 +59,8 @@ public class TextWriter : MonoBehaviour
     {
         if (targetText != null)
         {
-            if (isTyping)
-            {
-                StopTyping();
-            }
+
+            StopTyping();
             targetText.text = message;
             StartClearTimer();
         }
@@ -80,11 +78,8 @@ public class TextWriter : MonoBehaviour
             return;
         }
 
-        if (isTyping)
-        {
-            StopTyping();
-        }
 
+        StopTyping();
         typingCoroutine = StartCoroutine(TypeTextCoroutine(message));
     }
 
@@ -131,6 +126,11 @@ public class TextWriter : MonoBehaviour
         {
             StopCoroutine(typingCoroutine);
         }
+        if (clearCoroutine != null)
+        {
+            StopCoroutine(clearCoroutine);
+            clearCoroutine = null;
+        }
         isTyping = false;
     }
 
@@ -168,4 +168,6 @@ public class TextWriter : MonoBehaviour
     {
         Instance.ClearText();
     }
+
+    
 }

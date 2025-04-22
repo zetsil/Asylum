@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FirstHallWay.unity
     guid: bfd447a18c64f67268b34bbddff96d63
+  - enabled: 1
+    path: Assets/Scenes/HallWay2.unity
+    guid: cef09b2f7f642a3cca4c3ce198a36b41
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
