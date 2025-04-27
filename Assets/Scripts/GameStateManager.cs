@@ -37,6 +37,8 @@ public class GameStateManager : MonoBehaviour
     public string stairsPuzzleID = "StairsPuzzle";
     public string stairsStartPuzzelID = "stairStart"; 
     private int _infiniteLoopSolvedCount = 0;
+    private Queue<int> _lieTypeQueue = new Queue<int>();
+    private int _lastLieIndex = -1;
 
     private void Awake()
     {
@@ -50,6 +52,7 @@ public class GameStateManager : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
+        InitializeLieTypeQueue();
 
         // initialyze global Puzzels Infinity starirs is resolved or not 
         _objectStates[stairsPuzzleID] = false;
@@ -57,6 +60,50 @@ public class GameStateManager : MonoBehaviour
         
         
         LoadStates(); // Load any saved states
+    }
+
+
+    // Initialize or reshuffle the lie type queue
+    public void InitializeLieTypeQueue()
+    {
+        // Create list of all lie indices
+        List<int> lieIndices = new List<int>() { 0, 1, 2, 3 };
+        
+        // Fisher-Yates shuffle
+        for (int i = lieIndices.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            int temp = lieIndices[i];
+            lieIndices[i] = lieIndices[j];
+            lieIndices[j] = temp;
+        }
+
+        // Create queue
+        _lieTypeQueue = new Queue<int>(lieIndices);
+        Debug.Log($"Lie queue reshuffled: {string.Join(",", _lieTypeQueue)}");
+    }
+
+
+     // Get next lie type index
+    public int GetNextLieIndex()
+    {
+        // If queue is empty or would repeat, reshuffle
+        if (_lieTypeQueue.Count == 0 || 
+           (_lieTypeQueue.Peek() == _lastLieIndex && _lieTypeQueue.Count > 1))
+        {
+            InitializeLieTypeQueue();
+        }
+
+        // Special case: if only 1 type remains and it would repeat,
+        // dequeue and immediately requeue it
+        if (_lieTypeQueue.Peek() == _lastLieIndex)
+        {
+            int temp = _lieTypeQueue.Dequeue();
+            _lieTypeQueue.Enqueue(temp);
+        }
+
+        _lastLieIndex = _lieTypeQueue.Dequeue();
+        return _lastLieIndex;
     }
 
     public bool GetOrRegisterObjectState(string objectId, bool defaultState = false)
@@ -101,7 +148,7 @@ public class GameStateManager : MonoBehaviour
     {
         if (_infiniteLoopSolvedCount > 0)
         {
-            _infiniteLoopSolvedCount--;
+            _infiniteLoopSolvedCount = 0;
             Debug.Log($"Infinite loop solved count: {_infiniteLoopSolvedCount}/3");
             
             // Optional: Uncomment to save progress

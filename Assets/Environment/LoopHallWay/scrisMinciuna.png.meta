@@ -1,0 +1,442 @@
+fileFormatVersion: 2
+guid: 393ae3ae9bb18eb80ad077cde0a83b2c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3774452389747355893
+    second: scrisMinciuna_0
+  - first:
+      213: 7959501668202483267
+    second: scrisMinciuna_1
+  - first:
+      213: 49052590252660948
+    second: scrisMinciuna_2
+  - first:
+      213: -8736512418199739001
+    second: scrisMinciuna_3
+  - first:
+      213: 2373607499290255352
+    second: scrisMinciuna_4
+  - first:
+      213: -5479728154940031714
+    second: scrisMinciuna_5
+  - first:
+      213: 5488312419823130548
+    second: scrisMinciuna_6
+  - first:
+      213: 3359821005490271845
+    second: scrisMinciuna_7
+  - first:
+      213: -7266188576725884980
+    second: scrisMinciuna_8
+  - first:
+      213: -6005453527474195282
+    second: scrisMinciuna_9
+  - first:
+      213: -1707009342632682019
+    second: scrisMinciuna_10
+  - first:
+      213: 5541592663479382828
+    second: scrisMinciuna_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: scrisMinciuna_0
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 679
+        width: 217
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f0f388537c816430800000000000000
+      internalID: 3774452389747355893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_1
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 672
+        width: 141
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34e86529894d57e60800000000000000
+      internalID: 7959501668202483267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_2
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 703
+        width: 46
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d8925922154ea000800000000000000
+      internalID: 49052590252660948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_3
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 895
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7856a616e3ca1c680800000000000000
+      internalID: -8736512418199739001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_4
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 672
+        width: 319
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff1667d17fb0f020800000000000000
+      internalID: 2373607499290255352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_5
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 466
+        width: 35
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1db713a64814f3b0800000000000000
+      internalID: -5479728154940031714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_6
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 478
+        width: 135
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b71ce741176a2c40800000000000000
+      internalID: 5488312419823130548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_7
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 191
+        width: 137
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 566b425476b70ae20800000000000000
+      internalID: 3359821005490271845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_8
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 472
+        width: 138
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccf9045ccff492b90800000000000000
+      internalID: -7266188576725884980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_9
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 88
+        width: 145
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea4b8c3c5d758aca0800000000000000
+      internalID: -6005453527474195282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_10
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 131
+        width: 34
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddd1b180c0c7f48e0800000000000000
+      internalID: -1707009342632682019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrisMinciuna_11
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 57
+        width: 407
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c237994ba21b7ec40800000000000000
+      internalID: 5541592663479382828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      scrisMinciuna_0: 3774452389747355893
+      scrisMinciuna_1: 7959501668202483267
+      scrisMinciuna_10: -1707009342632682019
+      scrisMinciuna_11: 5541592663479382828
+      scrisMinciuna_2: 49052590252660948
+      scrisMinciuna_3: -8736512418199739001
+      scrisMinciuna_4: 2373607499290255352
+      scrisMinciuna_5: -5479728154940031714
+      scrisMinciuna_6: 5488312419823130548
+      scrisMinciuna_7: 3359821005490271845
+      scrisMinciuna_8: -7266188576725884980
+      scrisMinciuna_9: -6005453527474195282
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
