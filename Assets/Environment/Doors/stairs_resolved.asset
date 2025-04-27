@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ebbb578e8bb62518663d39dbb84c3f, type: 3}
-  m_Name: DoorHW1_2
+  m_Name: stairs_resolved
   m_EditorClassIdentifier: 
-  doorID: HW1_2
+  doorID: stairs
   fromDoor:
-    sceneName: FirstHallWay
-    doorID: HW1_2
+    sceneName: HallWay2
+    doorID: stairs
     spawnOffset: {x: 2, y: 0, z: 0}
   toDoor:
-    sceneName: HallWay2
-    doorID: HW2
+    sceneName: downstairsFH
+    doorID: stairsFH
     spawnOffset: {x: 2, y: 0, z: 0}
-  locked: 1
+  locked: 0
   initialLockedValue: 0

@@ -12,7 +12,6 @@ public class Emitter : MonoBehaviour
         if (!observers.Contains(observer))
         {
             observers.Add(observer);
-            Debug.Log($"{name}: Observer added: {observer}");
         }
     }
 
