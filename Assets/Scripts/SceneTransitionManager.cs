@@ -118,7 +118,6 @@ public class SceneTransitionManager : MonoBehaviour
             if (player != null)
             {
                 player.transform.position = matchingPoint.transform.position + matchingPoint.spawnOffset;
-                Debug.Log($"Player positioned at door: {matchingPoint.prevDoorID}");
             }
             else
             {

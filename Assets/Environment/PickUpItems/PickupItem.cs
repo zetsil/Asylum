@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider2D))]
 public class PickupItem : MonoBehaviour, IObserver
@@ -23,6 +24,9 @@ public class PickupItem : MonoBehaviour, IObserver
     private AudioSource audioSource;
     private Collider2D itemCollider;
     private string ID = "";
+
+    [Tooltip("Events to emit when this item is picked up")]
+    public List<string> eventsToEmitOnPickup = new List<string>();
 
     private void Awake()
     {
@@ -102,6 +106,7 @@ public class PickupItem : MonoBehaviour, IObserver
             Debug.Log("Pick Up!!!");
             this.Pickup();
         }
+
     }
 
     private void Pickup()
@@ -126,6 +131,15 @@ public class PickupItem : MonoBehaviour, IObserver
             visualRepresentation.SetActive(false);
         }
         itemCollider.enabled = false;
+
+        foreach (string eventName in eventsToEmitOnPickup)
+        {
+            if (!string.IsNullOrEmpty(eventName))
+            {
+                playerEmitter.NotifyObservers(eventName);
+                Debug.Log($"Emitted event: {eventName}");
+            }
+        }
         
         // Mark as picked in the ScriptableObject
         // itemData.SetPickedState(true);
