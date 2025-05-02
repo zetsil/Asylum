@@ -95,9 +95,6 @@ public class DrawingManager : MonoBehaviour
     void ConvertToKey()
     {
         GameObject key = Instantiate(keyPrefab, drawnPoints[drawnPoints.Count / 2], Quaternion.identity);
-        key.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("KeySprite"); // Asigură-te că ai un sprite de tip key în Resources
-        key.AddComponent<BoxCollider2D>();
-        key.AddComponent<Rigidbody2D>().gravityScale = 0.5f; // Face cheia un obiect fizic
         StartCoroutine(ShowSuccessAndLoadScene());
         Debug.Log("Cheia a fost creată!");
     }

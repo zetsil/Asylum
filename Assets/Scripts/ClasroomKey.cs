@@ -2,17 +2,20 @@ using UnityEngine;
 
 public class ClasroomKey : MonoBehaviour
 {
+    public GameObject refrenceKey ;
     void Start()
     {
         bool isEnabled = GameStateManager.Instance.GetObjectState("ClassroomKey");
 
         if (isEnabled)
         {
-            gameObject.SetActive(true);
+            Debug.Log("yeeeee");
+            refrenceKey.SetActive(true);
         }
         else
         {
-            gameObject.SetActive(false);
+            Debug.Log("nuuuu");
+            refrenceKey.SetActive(false);
         }
     }
 
