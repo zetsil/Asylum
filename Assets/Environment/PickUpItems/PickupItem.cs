@@ -103,7 +103,6 @@ public class PickupItem : MonoBehaviour, IObserver
 
     public void HandleEvent(string signal){
         if (youCanReachIt && canBePickedUp && signal == requiredKeySignal){
-            Debug.Log("Pick Up!!!");
             this.Pickup();
         }
 
@@ -123,6 +122,8 @@ public class PickupItem : MonoBehaviour, IObserver
         if (pickupSound != null) 
         {
             audioSource.PlayOneShot(pickupSound);
+            Debug.Log("Play");
+
         }
         
         // Disable visuals and collider
@@ -148,14 +149,27 @@ public class PickupItem : MonoBehaviour, IObserver
         // InventoryManager.Instance.AddItem(itemData);
         
         // Destroy after sound finishes (or immediately if no sound)
-        float destroyDelay = pickupSound != null ? pickupSound.length : 0.1f;
-        GameStateManager.Instance.UpdateObjectState(this.ID, true); // set in game state manager
+       // Get appropriate delay based on sound
+        float disableDelay = pickupSound != null ? pickupSound.length : 0.1f;
 
-        // Unsubscribe safely
+        // Update game state and unsubscribe immediately
+        GameStateManager.Instance.UpdateObjectState(this.ID, true);
         UnsubscribeFromEmitter();
 
-        // Add to ItemManager
+        // Add to ItemManager before disabling
         ItemManager.Instance.CollectItem(gameObject);
+
+        // Immediately move object far off-screen
+        gameObject.transform.position = new Vector3(-1000f, -1000f, -1000f);
+
+        // Schedule the disabling of the item object after delay
+        StartCoroutine(DisableAfterDelay(gameObject, disableDelay));
+    }
+
+    private IEnumerator DisableAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        obj.SetActive(false);
     }
 
     private void UnsubscribeFromEmitter()

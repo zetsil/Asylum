@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.18
+      value: 12.88
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.y
@@ -181,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5755486466822720130, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_Name
-      value: CamdelPuzzle (4)
+      value: CamdelPuzzle 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -398,13 +398,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   candles:
-  - {fileID: 134827191279154691}
-  - {fileID: 885759471}
-  - {fileID: 233474035}
-  - {fileID: 791402417}
-  - {fileID: 2023208735}
   - {fileID: 2031865283}
-  targetPattern: 101101
+  - {fileID: 2023208735}
+  - {fileID: 791402417}
+  - {fileID: 233474035}
+  - {fileID: 885759471}
+  - {fileID: 134827191279154691}
+  targetPattern: 011010
   targetSpriteRenderer: {fileID: 1532440822}
   angelActiveSprite: {fileID: 5933678993090467190, guid: d61b3472bc1d3bfeb875bee5886dce82, type: 3}
   closeUpCanvasImage: {fileID: 518234815}
@@ -5669,7 +5669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.19
+      value: 6.4
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5709,7 +5709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5755486466822720130, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_Name
-      value: CamdelPuzzle (2)
+      value: CamdelPuzzle 4
       objectReference: {fileID: 0}
     - target: {fileID: 7785434233523380742, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5812,7 +5812,7 @@ Transform:
   m_GameObject: {fileID: 731410897}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.063803, y: 0.94312, z: -10.064595}
+  m_LocalPosition: {x: 17.662344, y: 0.94316, z: -10.064595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5928,7 +5928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8474398478803543973, guid: 962708320d9bf0716bf27af1688a3549, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.78
+      value: 22.06
       objectReference: {fileID: 0}
     - target: {fileID: 8474398478803543973, guid: 962708320d9bf0716bf27af1688a3549, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5992,23 +5992,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.32
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.32
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.32
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.92
+      value: 9.31
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.5
+      value: -5.13
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6072,7 +6072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5755486466822720130, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_Name
-      value: CamdelPuzzle (3)
+      value: CamdelPuzzle 3
       objectReference: {fileID: 0}
     - target: {fileID: 7785434233523380742, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6137,7 +6137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23130423, g: 0.23130423, b: 0.23130423, a: 1}
+  m_Color: {r: 0.6681541, g: 0.6681541, b: 0.6681541, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6383,11 +6383,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.14
+      value: -5.44
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.04
+      value: -3.78
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6423,7 +6423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5755486466822720130, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_Name
-      value: CamdelPuzzle (1)
+      value: CamdelPuzzle 5
       objectReference: {fileID: 0}
     - target: {fileID: 7785434233523380742, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11286,23 +11286,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7799999
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7799999
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.7799999
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.99
+      value: 15.51
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.4
+      value: -4.65
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11338,7 +11338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5755486466822720130, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_Name
-      value: CamdelPuzzle (5)
+      value: CamdelPuzzle 1
       objectReference: {fileID: 0}
     - target: {fileID: 7785434233523380742, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11892,7 +11892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeDuration: 0.5
   shakeMagnitude: 0.1
-  lockedSound: {fileID: 0}
+  lockedSound: {fileID: 8300000, guid: 8682b917c88f4dd61af1c162ad7ec9cf, type: 3}
   openSound: {fileID: 0}
   connection: {fileID: 11400000, guid: e7f506bb68655fa809580137a8d41f24, type: 2}
   requiredKeyId: Angel
@@ -12641,7 +12641,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2366768503108872409, guid: bfee035ea2f0bf6b084cade87bda0418, type: 3}
       propertyPath: '_editorDialogs.Array.data[1].messages.Array.data[0]'
-      value: There's a handwritten poem left on the table
+      value: There's a handwritten  poem left on the table \n beside matches \n I
+        can now light on and off the candles
       objectReference: {fileID: 0}
     - target: {fileID: 8023006819532872575, guid: bfee035ea2f0bf6b084cade87bda0418, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12710,7 +12711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.04
+      value: -9.04
       objectReference: {fileID: 0}
     - target: {fileID: 1411436332063472729, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12762,7 +12763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5755486466822720130, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_Name
-      value: CamdelPuzzle
+      value: CamdelPuzzle 6
       objectReference: {fileID: 0}
     - target: {fileID: 7785434233523380742, guid: b6be3c2b18aee41718a75997aac23d87, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12787,7 +12788,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 795331769402265591, guid: 0ba75e43256256986aeb0eb6bb51e06d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.063799
+      value: 21.343798
       objectReference: {fileID: 0}
     - target: {fileID: 795331769402265591, guid: 0ba75e43256256986aeb0eb6bb51e06d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12998,6 +12999,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1183526717061609095, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
+      propertyPath: clearDelay
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183526717061609095, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
+      propertyPath: typingSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5154733343886165850, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
       propertyPath: m_Name
       value: TextWriter
