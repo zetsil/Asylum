@@ -371,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 700027199}
   tolerance: 0.4
-  keyPrefab: {fileID: 0}
+  keyPrefab: {fileID: 7862174713787394908, guid: 1c306242af1962447aed4a9382f97c05, type: 3}
 --- !u!120 &700027199
 LineRenderer:
   serializedVersion: 2

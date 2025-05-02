@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7a788dfbe0d8a6b7185a9d09f49be6ef
+guid: 57a69a2549381bd49878a854b1b87fd7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2451876604648623137
-    second: maturaMoarta_0
+      213: -4089212132996496100
+    second: Classroom Key_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: maturaMoarta_0
+      name: Classroom Key_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 512
-        height: 512
+        x: 229
+        y: 305
+        width: 1463
+        height: 470
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd3f3daf73f29fdd0800000000000000
-      internalID: -2451876604648623137
+      spriteID: c15c6890b333047c0800000000000000
+      internalID: -4089212132996496100
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      maturaMoarta_0: -2451876604648623137
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class DrawingManager : MonoBehaviour
 {
@@ -76,6 +79,8 @@ public class DrawingManager : MonoBehaviour
         float accuracy = (float)correctPoints / keyOutlinePoints.Count;
         if (accuracy > 0.75f) // Dacă 75% din puncte sunt corecte
         {
+            
+            GameStateManager.Instance.UpdateObjectState("ClassroomKey", true);
             Debug.Log("Desenul este corect! Transformăm în cheie.");
             ConvertToKey();
         }
@@ -93,7 +98,14 @@ public class DrawingManager : MonoBehaviour
         key.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("KeySprite"); // Asigură-te că ai un sprite de tip key în Resources
         key.AddComponent<BoxCollider2D>();
         key.AddComponent<Rigidbody2D>().gravityScale = 0.5f; // Face cheia un obiect fizic
-
+        StartCoroutine(ShowSuccessAndLoadScene());
         Debug.Log("Cheia a fost creată!");
+    }
+
+
+     IEnumerator ShowSuccessAndLoadScene()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("classroom"); // Schimbă cu numele scenei tale
     }
 }

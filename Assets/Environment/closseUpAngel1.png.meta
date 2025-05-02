@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      closseUpAngel1_0: -473287209994443170
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
