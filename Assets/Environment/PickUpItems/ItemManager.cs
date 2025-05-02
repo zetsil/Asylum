@@ -111,10 +111,6 @@ public class ItemManager : MonoBehaviour
         collectedItems.Add(itemObject);
         itemObject.transform.SetParent(itemContainer);
         
-        // Disable physics
-        DisablePhysics(itemObject);
-        itemObject.SetActive(false);
-        
         // Create UI representation
         CreateItemIcon(itemObject);
         
