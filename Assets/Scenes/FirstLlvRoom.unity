@@ -1240,8 +1240,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeDuration: 0.5
   shakeMagnitude: 0.2
-  lockedSound: {fileID: 8300000, guid: 8682b917c88f4dd61af1c162ad7ec9cf, type: 3}
-  openSound: {fileID: 0}
+  lockedSoundEvent: Door_Locked
+  openSoundEvent: Door_Open
+  unlockSoundEvent: Door_Unlock
   connection: {fileID: 11400000, guid: e8ed4ae19ff2c646f80c110dde2d66f8, type: 2}
   requiredKeyId: DoorKey1
 --- !u!1 &979127763
@@ -2064,67 +2065,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfee035ea2f0bf6b084cade87bda0418, type: 3}
---- !u!1001 &1845340733
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1183526717061609095, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: clearDelay
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5154733343886165850, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_Name
-      value: TextWriter
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798373110488596048, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -28.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798373110488596048, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.43050218
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798373110488596048, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -9.127193
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798373110488596048, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798373110488596048, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798373110488596048, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798373110488596048, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798373110488596048, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798373110488596048, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798373110488596048, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1b0861c0281734a11a2ee4ce79ef6728, type: 3}
 --- !u!1001 &1917477734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2703,4 +2643,3 @@ SceneRoots:
   - {fileID: 739382230}
   - {fileID: 1479200037}
   - {fileID: 1813374047}
-  - {fileID: 1845340733}

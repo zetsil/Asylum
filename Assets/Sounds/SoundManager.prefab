@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4170432511741829011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3312405449566460463}
+  - component: {fileID: 7382342809534178038}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3312405449566460463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170432511741829011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.219813, y: -0.4996693, z: -0.14952734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7382342809534178038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170432511741829011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07649f53ec60e653a847b54f4ff7da87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEvents:
+  - eventName: TriggerAngel
+    soundClip: {fileID: 8300000, guid: 0467b964b577f6a0492b38e6048fcf2d, type: 3}
+    volume: 0.242
+    playOnlyOnce: 1
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}
+  - eventName: candelFlip
+    soundClip: {fileID: 8300000, guid: d42ad3409c4929f0f9fc5c92d08a9e4a, type: 3}
+    volume: 0.242
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}
+  - eventName: UI_Flash
+    soundClip: {fileID: 8300000, guid: cff9e9b6ba3fa4d67b91cedebd5cddc6, type: 3}
+    volume: 1
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}
+  - eventName: PickUpSound
+    soundClip: {fileID: 8300000, guid: 522126766c6382920a33044c4cfc5d2b, type: 3}
+    volume: 0.475
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}
+  - eventName: Door_Locked
+    soundClip: {fileID: 8300000, guid: 8682b917c88f4dd61af1c162ad7ec9cf, type: 3}
+    volume: 0.475
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}
+  - eventName: Door_Unlock
+    soundClip: {fileID: 8300000, guid: f82bf4f222317bab7a8826482671e118, type: 3}
+    volume: 0.475
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}
+  - eventName: Door_Open
+    soundClip: {fileID: 8300000, guid: 9e6dcda2f583bba5f925395e1db4a3d3, type: 3}
+    volume: 0.475
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}
+  - eventName: Rain
+    soundClip: {fileID: 8300000, guid: f6307cb5add93a5eaa6b09abb056c58d, type: 3}
+    volume: 0.168
+    playOnlyOnce: 0
+    loop: 1
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}

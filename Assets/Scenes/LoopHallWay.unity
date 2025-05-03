@@ -1461,8 +1461,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeDuration: 0.5
   shakeMagnitude: 0.1
-  lockedSound: {fileID: 0}
-  openSound: {fileID: 0}
+  lockedSoundEvent: Door_Locked
+  openSoundEvent: Stairs_Up
+  unlockSoundEvent: Door_Unlock
   connection: {fileID: 11400000, guid: 83b04068a08392912bd50271872509fa, type: 2}
   requiredKeyId: DoorKey1
 --- !u!212 &1048292117
@@ -1786,6 +1787,67 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 238743634}
   m_SourcePrefab: {fileID: 100100000, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
+--- !u!1001 &1223521151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3312405449566460463, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.219813
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312405449566460463, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4996693
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312405449566460463, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.14952734
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312405449566460463, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312405449566460463, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312405449566460463, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312405449566460463, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312405449566460463, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312405449566460463, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312405449566460463, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170432511741829011, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382342809534178038, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: soundEvents.Array.data[7].playOnlyOnce
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
 --- !u!1001 &1304551250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2463,6 +2525,54 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 12.062897, y: 14.526052}
   m_EdgeRadius: 0
+--- !u!1 &1541435152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541435154}
+  - component: {fileID: 1541435153}
+  m_Layer: 0
+  m_Name: RainSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1541435153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541435152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c31fcb0a162e2b09b48bf4d74869c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEvent: Rain
+  playOnStart: 1
+  playOnEnable: 0
+  playOnDestroy: 0
+--- !u!4 &1541435154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541435152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.584242, y: 25.716835, z: -0.6217898}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1548383289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,8 +2844,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeDuration: 0.5
   shakeMagnitude: 0.1
-  lockedSound: {fileID: 0}
-  openSound: {fileID: 0}
+  lockedSoundEvent: Door_Locked
+  openSoundEvent: Stairs_Up
+  unlockSoundEvent: Door_Unlock
   connection: {fileID: 11400000, guid: 83b04068a08392912bd50271872509fa, type: 2}
   requiredKeyId: DoorKey1
 --- !u!61 &1568477812
@@ -3588,11 +3699,11 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1327502920}
   - {fileID: 868992566}
   - {fileID: 1483266811}
   - {fileID: 1568477810}
   - {fileID: 1048292118}
-  - {fileID: 1327502920}
   - {fileID: 496413633}
   - {fileID: 845075131}
   - {fileID: 268697854}
@@ -3626,3 +3737,5 @@ SceneRoots:
   - {fileID: 1548383292}
   - {fileID: 1427813964}
   - {fileID: 1040191720}
+  - {fileID: 1223521151}
+  - {fileID: 1541435154}
