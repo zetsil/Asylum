@@ -8,6 +8,10 @@ public class CanvasFlasher : MonoBehaviour
     public float flashDuration = 1f;
     public int flashCount = 3;
     
+    [Header("Sound Settings")]
+    public string flashSoundEvent = "UI_Flash"; // Name of the sound event in SoundManager
+    public bool playSoundOnFlash = true;
+    
     [Header("Advanced Settings")]
     public AnimationCurve fadeCurve = AnimationCurve.Linear(0, 0, 1, 1);
     
@@ -48,6 +52,12 @@ public class CanvasFlasher : MonoBehaviour
         
         for (int i = 0; i < flashCount; i++)
         {
+            // Play sound at the start of each flash
+            if (playSoundOnFlash && !string.IsNullOrEmpty(flashSoundEvent))
+            {
+                SoundManager.PlayEventSound(flashSoundEvent);
+            }
+
             // Fade in
             yield return FadeCanvas(0f, 1f, flashInterval/2);
 
@@ -62,7 +72,7 @@ public class CanvasFlasher : MonoBehaviour
         yield return FadeCanvas(1f, 0f, flashInterval/2);
         
         // Ensure canvas is completely hidden
-        targetCanvas.enabled = false;
+        targetCanvas.enabled = canvasWasEnabled;
         isFlashing = false;
     }
 
@@ -90,7 +100,7 @@ public class CanvasFlasher : MonoBehaviour
             StopAllCoroutines();
             if (targetCanvas != null)
             {
-                targetCanvas.enabled = false;
+                targetCanvas.enabled = canvasWasEnabled;
             }
             isFlashing = false;
         }
