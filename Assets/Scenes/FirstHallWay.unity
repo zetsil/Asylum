@@ -11903,6 +11903,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7382342809534178038, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: soundEvents.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382342809534178038, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: soundEvents.Array.data[0].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382342809534178038, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: soundEvents.Array.data[8].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382342809534178038, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: soundEvents.Array.data[8].volume
+      value: 0.168
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382342809534178038, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: soundEvents.Array.data[8].eventName
+      value: Walk_Starirs
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382342809534178038, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: soundEvents.Array.data[8].soundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0577c8c6076e749ba8245ec4ca04a956, type: 3}
+    - target: {fileID: 7382342809534178038, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
+      propertyPath: soundEvents.Array.data[0].playOnlyInThisScene
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

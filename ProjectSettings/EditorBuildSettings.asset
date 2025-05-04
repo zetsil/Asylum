@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoopHallWay.unity
     guid: 1d532198949380e18a6c58b98ff8dfb1
+  - enabled: 1
+    path: Assets/Scenes/Transition.unity
+    guid: 50ad694d502e175178f690dec17f4af4
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

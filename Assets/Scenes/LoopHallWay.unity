@@ -1150,7 +1150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.7
+      value: 10.77
       objectReference: {fileID: 0}
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   shakeDuration: 0.5
   shakeMagnitude: 0.1
   lockedSoundEvent: Door_Locked
-  openSoundEvent: Stairs_Up
+  openSoundEvent: Walk_Stairs
   unlockSoundEvent: Door_Unlock
   connection: {fileID: 11400000, guid: 83b04068a08392912bd50271872509fa, type: 2}
   requiredKeyId: DoorKey1
@@ -1550,7 +1550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.7
+      value: 11.72
       objectReference: {fileID: 0}
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1729,11 +1729,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.8
+      value: 26.17
       objectReference: {fileID: 0}
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.3
+      value: 10.98
       objectReference: {fileID: 0}
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1787,7 +1787,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 238743634}
   m_SourcePrefab: {fileID: 100100000, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
---- !u!1001 &1223521151
+--- !u!1001 &1242812983
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1838,10 +1838,6 @@ PrefabInstance:
     - target: {fileID: 4170432511741829011, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
       propertyPath: m_Name
       value: SoundManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7382342809534178038, guid: 3e195c008aee9939d8989e3a1bf332af, type: 3}
-      propertyPath: soundEvents.Array.data[7].playOnlyOnce
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1927,7 +1923,7 @@ PrefabInstance:
       objectReference: {fileID: 496413633}
     - target: {fileID: 819500940024894666, guid: 962708320d9bf0716bf27af1688a3549, type: 3}
       propertyPath: moveSpeed
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 819500940024894666, guid: 962708320d9bf0716bf27af1688a3549, type: 3}
       propertyPath: bottomPoint
@@ -2012,7 +2008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.2
+      value: 11.34
       objectReference: {fileID: 0}
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2845,7 +2841,7 @@ MonoBehaviour:
   shakeDuration: 0.5
   shakeMagnitude: 0.1
   lockedSoundEvent: Door_Locked
-  openSoundEvent: Stairs_Up
+  openSoundEvent: Walk_Stairs
   unlockSoundEvent: Door_Unlock
   connection: {fileID: 11400000, guid: 83b04068a08392912bd50271872509fa, type: 2}
   requiredKeyId: DoorKey1
@@ -2968,7 +2964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.8
+      value: 10.76
       objectReference: {fileID: 0}
     - target: {fileID: 6145196159705696217, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3737,5 +3733,5 @@ SceneRoots:
   - {fileID: 1548383292}
   - {fileID: 1427813964}
   - {fileID: 1040191720}
-  - {fileID: 1223521151}
   - {fileID: 1541435154}
+  - {fileID: 1242812983}
