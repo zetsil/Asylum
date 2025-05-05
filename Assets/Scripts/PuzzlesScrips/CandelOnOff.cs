@@ -5,6 +5,8 @@ public class CandelOnOff : MonoBehaviour, IObserver
     private bool isPlayerInTrigger = false;
     private Emitter playerEmitter;
     private CandleFlicker candleLight;
+    public string signal = "candelFlip";
+    public bool youHaveMaches = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -26,8 +28,10 @@ public class CandelOnOff : MonoBehaviour, IObserver
         // Handle events based on the door's current state
         if (message == "E" && isPlayerInTrigger)
         {
+            if(!candleLight.isLit && !youHaveMaches)
+                return;
             candleLight.isLit = !candleLight.isLit;
-            playerEmitter.NotifyObservers("candelFlip");
+            playerEmitter.NotifyObservers(signal);
         }
     }
 

@@ -33,6 +33,10 @@ public class CreepyHandChase : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Player Caught!");
+            // Load the target scene
+            GameStateManager.Instance.DecrementInfiniteLoopSolved();
+            Debug.Log("Puzzle failed - decrementing loop count");
+            SceneTransitionManager.Instance.LoadScene("HallWay2");
             // Here you can call your Game Over logic
         }
     }

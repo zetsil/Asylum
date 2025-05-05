@@ -108,3 +108,10 @@ MonoBehaviour:
     loop: 0
     hasPlayed: 0
     dedicatedSource: {fileID: 0}
+  - eventName: Clock
+    soundClip: {fileID: 8300000, guid: 5cc228deb0062e830a290c210747795a, type: 3}
+    volume: 0.168
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}

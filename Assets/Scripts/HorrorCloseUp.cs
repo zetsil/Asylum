@@ -96,6 +96,10 @@ public class HorrorCloseUp : MonoBehaviour, IObserver
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
+            if(isShowing)
+            {
+                HideCloseUp();
+            }
         }
     }
 
@@ -182,4 +186,5 @@ public class HorrorCloseUp : MonoBehaviour, IObserver
             playerEmitter.RemoveObserver(this);
         }
     }
+
 }
