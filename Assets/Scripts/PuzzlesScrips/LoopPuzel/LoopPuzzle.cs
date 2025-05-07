@@ -7,6 +7,7 @@ public class LoopPuzzle : MonoBehaviour, IObserver
     private Emitter playerEmitter;
     public List<GameObject> bloodParticleSystems = new List<GameObject>();
     public bool puzzleStarted = false;
+    public GameObject shara;
     private bool isPuzzleTruthful = true;
     private bool puzzleSolved = false;
 
@@ -39,11 +40,12 @@ public class LoopPuzzle : MonoBehaviour, IObserver
         if (!puzzleStarted)
         {
             isPuzzleTruthful = true;
-            puzzleStarted = true;
-            GameStateManager.Instance?.UpdateObjectState("stairStart", true);
+            // puzzleStarted = true;
+            // GameStateManager.Instance?.UpdateObjectState("stairStart", true);
         }
         else
         {
+            shara.SetActive(false);
             // Subsequent times: 20% chance of being true (80% chance of being a lie)
             isPuzzleTruthful = Random.value <= truthChance;
             Debug.Log($"Puzzle is truthful: {isPuzzleTruthful} (Rolled {Random.value.ToString("F2")} against {truthChance})");
@@ -120,6 +122,7 @@ public class LoopPuzzle : MonoBehaviour, IObserver
 
     private void OnSceneUnloadedHandler()
     {
+        if(!puzzleStarted) return;
         if (GameStateManager.Instance == null) return;
         
         if (puzzleSolved)
@@ -164,7 +167,10 @@ public class LoopPuzzle : MonoBehaviour, IObserver
                         handChaseScript.enabled = true;
                         Debug.Log("Hand chase started!");
                     }
-                }
+                }break;
+            case "StartPuzzle":
+                puzzleStarted = true;
+                GameStateManager.Instance?.UpdateObjectState("stairStart", true);
                 break;
         }
     }

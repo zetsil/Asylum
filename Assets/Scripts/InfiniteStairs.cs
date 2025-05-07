@@ -16,17 +16,12 @@ public class InfiniteStairs : MonoBehaviour, IObserver
     public DoorConnection unsolvedConnection; // Connection for infinite loop
     
     private bool isPlayerInTrigger;
-    private AudioSource audioSource;
     private Emitter playerEmitter;
      private string stairID; // Must be unique within this scene
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null) 
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
+
     }
 
     private void Start()
@@ -67,7 +62,7 @@ public class InfiniteStairs : MonoBehaviour, IObserver
         }
 
         // Play appropriate sound
-        PlaySound(puzzleSolved ? progressSound : loopSound);
+        SoundManager.PlayEventSound("Walk_Stairs"); // Play open sound
 
         // Set transition data with proper door information
         SceneTransitionManager.Instance.SetTransitionData(
@@ -86,11 +81,6 @@ public class InfiniteStairs : MonoBehaviour, IObserver
         {
             Debug.Log("The stairs loop back endlessly... something must be missing");
         }
-    }
-
-    private void PlaySound(AudioClip clip)
-    {
-        if (clip && audioSource) audioSource.PlayOneShot(clip);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

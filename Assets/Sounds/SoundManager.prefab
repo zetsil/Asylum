@@ -101,3 +101,17 @@ MonoBehaviour:
     loop: 1
     hasPlayed: 0
     dedicatedSource: {fileID: 0}
+  - eventName: Walk_Stairs
+    soundClip: {fileID: 8300000, guid: 0577c8c6076e749ba8245ec4ca04a956, type: 3}
+    volume: 0.168
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}
+  - eventName: Clock
+    soundClip: {fileID: 8300000, guid: 5cc228deb0062e830a290c210747795a, type: 3}
+    volume: 0.168
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}

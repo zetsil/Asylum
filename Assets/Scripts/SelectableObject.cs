@@ -29,6 +29,11 @@ public class SelectableObject2D : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Debug.Log("Player entered the trigger of " + gameObject.name);
+            VisibilityController playerVisibility = other.GetComponent<VisibilityController>();
+            if (playerVisibility != null)
+            {
+                playerVisibility.SetVisible();
+            }
 
             // Apply the highlight effect
             if (spriteRenderer != null)
@@ -49,6 +54,8 @@ public class SelectableObject2D : MonoBehaviour
         // Check if the collider has the tag "Player"
         if (other.CompareTag("Player"))
         {
+            // Get VisibilityController from the player and hide it
+            VisibilityController playerVisibility = other.GetComponent<VisibilityController>();
             // Revert to the original color
             if (spriteRenderer != null)
             {
@@ -58,6 +65,11 @@ public class SelectableObject2D : MonoBehaviour
             {
                 Debug.LogError("SpriteRenderer component is missing on " + gameObject.name);
             }
+            if (playerVisibility != null)
+            {
+                playerVisibility.SetHide();
+            }
+                
         }
 
     }

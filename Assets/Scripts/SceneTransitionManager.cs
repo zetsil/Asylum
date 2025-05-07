@@ -27,6 +27,8 @@ public class SceneTransitionManager : MonoBehaviour
     }
 
     private DoorData _currentTransition;
+    private bool _isTransitioning = false; // Flag to track transition state
+
     
     private void Awake()
     {
@@ -55,6 +57,12 @@ public class SceneTransitionManager : MonoBehaviour
             return;
         }
 
+        if (_isTransitioning)
+        {
+            Debug.LogWarning("Scene transition already in progress - ignoring request");
+            return;
+        }
+
         if (string.IsNullOrEmpty(sceneName))
         {
             Debug.LogError("Invalid scene name");
@@ -66,30 +74,63 @@ public class SceneTransitionManager : MonoBehaviour
     
     private IEnumerator LoadSceneAsync(string sceneName)
     {
-        // Show loading screen/transition here
-        Debug.Log($"Loading scene: {sceneName}");
+        _isTransitioning = true; // Set flag at start of transition
         
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-        asyncLoad.allowSceneActivation = false;
-        
-        // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
+        try
         {
-            // Progress from 0-0.9 (1.0 happens after activation)
-            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-            Debug.Log($"Loading progress: {progress * 100}%");
-            
-            // When loading is almost complete
-            if (asyncLoad.progress >= 0.9f)
-            {
-                asyncLoad.allowSceneActivation = true;
+            // Step 1: Load Transition scene additively
+            AsyncOperation transitionLoad = SceneManager.LoadSceneAsync("Transition", LoadSceneMode.Additive);
+            yield return new WaitUntil(() => transitionLoad.isDone);
+
+            // Step 2: Get the TransitionController
+            GameObject transitionRoot = GameObject.Find("TransitionCanvas");
+            TransitionController transition = transitionRoot.GetComponent<TransitionController>();
+            Camera transitionCamera = GameObject.Find("TransitionCamera").GetComponent<Camera>();
+            transitionCamera.gameObject.SetActive(false);
+
+            // Step 3: Fade In (black screen hides current scene)
+            yield return transition.StartCoroutine(transition.FadeIn(1f));
+            yield return new WaitForSeconds(1f);
+
+            // Step 4: Unload previous scene (except Transition)
+            Scene activeScene = SceneManager.GetActiveScene();
+            if (activeScene.name != "Transition") {
+                yield return SceneManager.UnloadSceneAsync(activeScene);
             }
-            
+
+            // Step 5: Load the new scene additively
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            asyncLoad.allowSceneActivation = false;
+            transitionCamera.gameObject.SetActive(true);
+            while (asyncLoad.progress < 0.9f)
+            {
+                float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+                Debug.Log($"Loading progress: {progress * 100}%");
+                yield return null;
+            }
+
+            asyncLoad.allowSceneActivation = true;
+            yield return new WaitUntil(() => asyncLoad.isDone);
             yield return null;
+            transitionCamera.gameObject.SetActive(false);
+            PositionPlayer();
+            // Step 6: Set the new scene as active
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+
+            // Step 7: Fade Out (reveal new scene)
+            yield return transition.StartCoroutine(transition.FadeOut(1f));
+
+            // Step 8: Unload transition scene
+            yield return SceneManager.UnloadSceneAsync("Transition");
         }
-        
-        PositionPlayer();
+        finally
+        {
+            _isTransitioning = false; // Ensure flag is reset even if something fails
+        }
     }
+
+
+
     
     private void PositionPlayer()
     {
