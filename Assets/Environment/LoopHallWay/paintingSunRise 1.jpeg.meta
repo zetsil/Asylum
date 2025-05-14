@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      paintingSunRise 1_0: 5758760014402544519
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

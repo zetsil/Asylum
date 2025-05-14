@@ -36,6 +36,7 @@ public class GameStateManager : MonoBehaviour
     private Dictionary<string, bool> _objectStates = new Dictionary<string, bool>();
     public string stairsPuzzleID = "StairsPuzzle";
     public string stairsStartPuzzelID = "stairStart"; 
+    public string clasroomKeyID = "ClassroomKey";
     private int _infiniteLoopSolvedCount = 0;
     private Queue<int> _lieTypeQueue = new Queue<int>();
     private int _lastLieIndex = -1;
@@ -57,6 +58,7 @@ public class GameStateManager : MonoBehaviour
         // initialyze global Puzzels Infinity starirs is resolved or not 
         _objectStates[stairsPuzzleID] = false;
         _objectStates[stairsStartPuzzelID] = false;
+        _objectStates[clasroomKeyID] = false;
         
         
         LoadStates(); // Load any saved states

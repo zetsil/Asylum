@@ -297,7 +297,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lumanare2_0: -8840273278236876206
+      lumanare2_1: -3884942619803666636
+      lumanare2_2: 931479334955531603
+      lumanare2_3: -2498258234355150056
+      lumanare2_4: -5166317596742372876
+      lumanare2_5: 3872715652968284250
+      lumanare2_6: 3918463178825434565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
