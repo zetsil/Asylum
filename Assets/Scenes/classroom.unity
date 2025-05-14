@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -2278,8 +2279,8 @@ GameObject:
   - component: {fileID: 2029933041}
   - component: {fileID: 2029933040}
   - component: {fileID: 2029933039}
-  - component: {fileID: 2029933043}
   - component: {fileID: 2029933044}
+  - component: {fileID: 2029933045}
   m_Layer: 0
   m_Name: masa_0
   m_TagString: Untagged
@@ -2449,26 +2450,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2029933043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029933038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3287b15f9d10971c7ac99933b9f0d2fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetCanvas: {fileID: 1323578292}
-  fadeDuration: 0.5
-  startHidden: 1
-  interactionLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  activationMessage: Press E to inspect
-  closeUpDiaEvent: empty
 --- !u!114 &2029933044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2482,6 +2463,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightColor: {r: 0.806537, g: 0.806537, b: 0.806537, a: 1}
+--- !u!114 &2029933045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029933038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7ce7a7e856afc75a07fdbdf16b15ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCanvas: {fileID: 1323578292}
+  fadeDuration: 0.5
+  startHidden: 1
+  dialogEvent: empty
 --- !u!1001 &2121261609
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -135,14 +135,24 @@ public class GameStateManager : MonoBehaviour
     // Add these new methods for infinite loop tracking
     public void IncrementInfiniteLoopSolved()
     {
+        if(GetObjectState(stairsPuzzleID)) return;
+
         if (_infiniteLoopSolvedCount < 3)
         {
             _infiniteLoopSolvedCount++;
+            
+            if(_infiniteLoopSolvedCount == 3){
+                UpdateObjectState(stairsPuzzleID, true);
+            }
             // PlayerPrefs.SetInt("InfiniteLoopSolvedCount", _infiniteLoopSolvedCount);
             // PlayerPrefs.Save();
             // _infiniteLoopSolvedCount++;
             Debug.Log($"Infinite loop solved count: {_infiniteLoopSolvedCount}/3");
+        }else if(_infiniteLoopSolvedCount == 3){
+            UpdateObjectState(stairsPuzzleID, true);
         }
+            
+        
     }
 
 

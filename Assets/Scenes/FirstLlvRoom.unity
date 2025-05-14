@@ -469,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 1765973840}
     - target: {fileID: 819500940024894666, guid: 962708320d9bf0716bf27af1688a3549, type: 3}
       propertyPath: moveSpeed
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 819500940024894666, guid: 962708320d9bf0716bf27af1688a3549, type: 3}
       propertyPath: bottomPoint
