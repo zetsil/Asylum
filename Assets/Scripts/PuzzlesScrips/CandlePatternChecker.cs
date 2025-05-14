@@ -216,16 +216,16 @@ public class CandlePatternChecker : MonoBehaviour , IObserver
         {
             puzzleTrigered = true;
             GameStateManager.Instance.UpdateObjectState(this.puzzleTrigeredID, true); // set in game state manager
-            foreach (GameObject candle in candles){
-                CandelOnOff script = candle.GetComponent<CandelOnOff>();
-                script.enabled = true;
-            }
+            // foreach (GameObject candle in candles){
+            //     CandelOnOff script = candle.GetComponent<CandelOnOff>();
+            //     script.enabled = true;
+            // }
             // Flip all candles
             foreach (CandleFlicker candle in candleScripts)
             {
                 if (candle != null)
                 {
-                    candle.ToggleCandle();
+                    candle.ExtinguishCandle();
                 }
             }
 

@@ -480,6 +480,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2141522506537010977, guid: 962708320d9bf0716bf27af1688a3549, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2141522506537010977, guid: 962708320d9bf0716bf27af1688a3549, type: 3}
       propertyPath: m_SortingLayerID
       value: -1528995483
       objectReference: {fileID: 0}
@@ -786,7 +790,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1104046599341705545, guid: 654023905b84979ccb376c84a5e834c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2033630003}
   m_SourcePrefab: {fileID: 100100000, guid: 654023905b84979ccb376c84a5e834c7, type: 3}
 --- !u!1 &479448784
 GameObject:
@@ -3169,6 +3176,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 407dff2acbd6c3ce1ad4a727a7ac9742, type: 3}
+--- !u!1 &2033630000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1104046599341705545, guid: 654023905b84979ccb376c84a5e834c7, type: 3}
+  m_PrefabInstance: {fileID: 404068029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2033630003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033630000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f24997086154d83b153bb1286b9911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: candelFlip
 --- !u!1 &2075616785
 GameObject:
   m_ObjectHideFlags: 0
@@ -3286,7 +3311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signal: candelFlip
-  youHaveMaches: 0
 --- !u!61 &2087944846
 BoxCollider2D:
   m_ObjectHideFlags: 0

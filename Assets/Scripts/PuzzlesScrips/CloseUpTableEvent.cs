@@ -23,6 +23,8 @@ public class CloseUpTableEvent : MonoBehaviour, IObserver // this is same like h
     private bool isHiding = false;
     private Emitter playerEmitter;
     public string closeUpDiaEvent = "empty";
+    private bool takeMaches = false;
+    public GameObject maches;
 
     void Start()
     {
@@ -174,6 +176,13 @@ public class CloseUpTableEvent : MonoBehaviour, IObserver // this is same like h
         if (canvasGroup == null || !isShowing || isHiding) return;
         
         isHiding = true;
+
+        if(!GameStateManager.Instance.GetObjectState("Maches") && !takeMaches){
+            takeMaches = true;
+            PickupItem pickUpScript = maches.GetComponent<PickupItem>();
+            pickUpScript.PickUpDistance();
+
+        }
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
         StartCoroutine(EmitAfterSeconds(5f)); // triger special event after 2 seconds

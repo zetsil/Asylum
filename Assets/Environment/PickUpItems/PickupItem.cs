@@ -108,6 +108,10 @@ public class PickupItem : MonoBehaviour, IObserver
 
     }
 
+    public void PickUpDistance(){
+        this.Pickup();
+    }
+
     private void Pickup()
     {
         if (isPickedUp) return; // Prevent multiple pickups
