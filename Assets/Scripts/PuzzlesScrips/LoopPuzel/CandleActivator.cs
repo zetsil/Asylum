@@ -60,12 +60,12 @@ public class CandleActivator : MonoBehaviour
         {
             candleLight.enabled = active;
         }
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
         else
         {
             Debug.LogWarning("Light2D not found on children", this);
         }
-#endif
+// #endif
     }
 
 }

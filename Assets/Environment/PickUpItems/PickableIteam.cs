@@ -11,7 +11,7 @@ public class PickableItem : ScriptableObject
     [SerializeField] private Sprite _icon;
     [SerializeField] private bool _isPicked;
     
-    #if UNITY_EDITOR
+    // #if UNITY_EDITOR
     private void OnValidate()
     {
         // Ensure ID is always unique and not empty
@@ -28,7 +28,7 @@ public class PickableItem : ScriptableObject
             // UnityEditor.EditorUtility.SetDirty(this);
         }
     }
-    #endif
+    // #endif
 
     /// <summary>
     /// Marks the item as picked or unpicked

@@ -13,14 +13,14 @@ public class SceneTransitionManager : MonoBehaviour
             {
                 _instance = FindObjectOfType<SceneTransitionManager>();
                 
-                #if UNITY_EDITOR
+                // #if UNITY_EDITOR
                 if (_instance == null && Application.isPlaying)
                 {
                     Debug.LogWarning("SceneTransitionManager auto-created for editor testing");
                     GameObject go = new GameObject("SceneTransitionManager (Editor-Temporary)");
                     _instance = go.AddComponent<SceneTransitionManager>();
                 }
-                #endif
+                // #endif
             }
             return _instance;
         }
@@ -171,7 +171,7 @@ public class SceneTransitionManager : MonoBehaviour
         }
     }
 
-    #if UNITY_EDITOR
+    // #if UNITY_EDITOR
     private void OnDestroy()
     {
         if (_instance == this)
@@ -179,7 +179,7 @@ public class SceneTransitionManager : MonoBehaviour
             _instance = null;
         }
     }
-    #endif
+    // #endif
 }
 
 [System.Serializable]

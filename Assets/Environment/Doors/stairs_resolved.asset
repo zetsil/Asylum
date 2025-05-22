@@ -18,8 +18,8 @@ MonoBehaviour:
     doorID: stairs
     spawnOffset: {x: 2, y: 0, z: 0}
   toDoor:
-    sceneName: downstairsFH
-    doorID: stairsFH
+    sceneName: Classroom Chapel hall
+    doorID: stairs
     spawnOffset: {x: 2, y: 0, z: 0}
   locked: 0
   initialLockedValue: 0

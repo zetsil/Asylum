@@ -50,7 +50,7 @@ public class ExitMessageEmitter : MonoBehaviour
         }
     }
 
-    #if UNITY_EDITOR
+    // #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (!showGizmo) return;
@@ -82,5 +82,5 @@ public class ExitMessageEmitter : MonoBehaviour
                 break;
         }
     }
-    #endif
+    // #endif
 }

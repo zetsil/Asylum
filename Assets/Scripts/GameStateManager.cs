@@ -13,7 +13,7 @@ public class GameStateManager : MonoBehaviour
             {
                 _instance = FindObjectOfType<GameStateManager>();
                 
-                #if UNITY_EDITOR
+                // #if UNITY_EDITOR
                 if (_instance == null && Application.isPlaying)
                 {
                     Debug.LogWarning("GameStateManager auto-created for editor testing");
@@ -22,7 +22,7 @@ public class GameStateManager : MonoBehaviour
                     // Optional: mark as don't destroy if you want it to persist
                     // DontDestroyOnLoad(go);
                 }
-                #endif
+                // #endif
                 
                 if (_instance == null && !Application.isPlaying)
                 {
@@ -140,7 +140,7 @@ public class GameStateManager : MonoBehaviour
         if (_infiniteLoopSolvedCount < 3)
         {
             _infiniteLoopSolvedCount++;
-            
+
             if(_infiniteLoopSolvedCount == 3){
                 UpdateObjectState(stairsPuzzleID, true);
             }
@@ -189,10 +189,10 @@ public class GameStateManager : MonoBehaviour
         }
 
         // Debug different behavior in editor vs. build
-        #if UNITY_EDITOR
+        // #if UNITY_EDITOR
         Debug.LogWarning($"Object state not initialized for {objectId}. "
                     + "Did you forget to call GetOrRegisterObjectState() first?");
-        #endif
+        // #endif
 
         return false;
     }

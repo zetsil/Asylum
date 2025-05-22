@@ -50,37 +50,38 @@ public class ItemManager : MonoBehaviour
     {
         get
         {
-
             if (_instance == null)
             {
                 _instance = FindObjectOfType<ItemManager>();
 
-                #if UNITY_EDITOR
-                // Special editor-only handling
-                if (_instance == null)
-                {
-                    if (Application.isPlaying)
-                    {
-                        Debug.LogWarning("[ItemManager] Auto-creating temporary instance for play mode");
-                        GameObject go = new GameObject("ItemManager (Runtime-Temporary)");
-                        _instance = go.AddComponent<ItemManager>();
-                        _instance.InitializeUI(); // Initialize UI for auto-created instance
-                    }
-                    else
-                    {
-                        Debug.LogError("[ItemManager] Attempted to access in edit mode! Use editor-time fallbacks instead.");
-                    }
-                }
-                #endif
-
+                // Dacă nu există instanță, creează una în runtime (dar nu în editor)
                 if (_instance == null && Application.isPlaying)
+                {
+                    Debug.LogWarning("[ItemManager] Auto-creating runtime instance");
+                    GameObject go = new GameObject("ItemManager (Runtime-Auto)");
+                    _instance = go.AddComponent<ItemManager>();
+                    _instance.InitializeUI(); // Inițializează UI-ul pentru instanțele create automat
+                }
+
+                // Avertisment doar în editor (dar nu bloca instanțierea)
+                // #if UNITY_EDITOR
+                if (_instance == null && !Application.isPlaying)
+                {
+                    Debug.LogError("[ItemManager] Attempted to access in edit mode! Use editor-time fallbacks instead.");
+                }
+                // #endif
+
+                // Mesaj de eroare pentru build-uri dacă nu s-a putut crea instanța
+                if (_instance == null)
                 {
                     Debug.LogError("[ItemManager] Critical error - no instance found in play mode!");
                 }
             }
+
             return _instance;
         }
     }
+
 
 
     private void InitializeUI()
