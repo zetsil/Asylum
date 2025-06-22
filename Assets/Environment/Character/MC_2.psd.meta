@@ -2650,7 +2650,7 @@ ScriptedImporter:
     spritePosition: {x: 222, y: 319}
   - name: arm2
     originalName: 
-    pivot: {x: 0.49017873, y: 0.0076261717}
+    pivot: {x: 0.527708, y: 0.2890902}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -3082,7 +3082,7 @@ ScriptedImporter:
     spritePosition: {x: 502, y: 399}
   - name: arm1
     originalName: 
-    pivot: {x: 0.48300558, y: 0.013342341}
+    pivot: {x: 0.469868, y: 0.48383072}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
