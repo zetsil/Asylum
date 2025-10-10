@@ -69,7 +69,7 @@ public class GameStateManager : MonoBehaviour
     public void InitializeLieTypeQueue()
     {
         // Create list of all lie indices
-        List<int> lieIndices = new List<int>() { 0, 1, 2, 3 };
+        List<int> lieIndices = new List<int>() { 0, 1, 2, 3, 4 };
         
         // Fisher-Yates shuffle
         for (int i = lieIndices.Count - 1; i > 0; i--)
@@ -137,18 +137,18 @@ public class GameStateManager : MonoBehaviour
     {
         if(GetObjectState(stairsPuzzleID)) return;
 
-        if (_infiniteLoopSolvedCount < 3)
+        if (_infiniteLoopSolvedCount < 5)
         {
             _infiniteLoopSolvedCount++;
 
-            if(_infiniteLoopSolvedCount == 3){
+            if(_infiniteLoopSolvedCount == 5){
                 UpdateObjectState(stairsPuzzleID, true);
             }
             // PlayerPrefs.SetInt("InfiniteLoopSolvedCount", _infiniteLoopSolvedCount);
             // PlayerPrefs.Save();
             // _infiniteLoopSolvedCount++;
             Debug.Log($"Infinite loop solved count: {_infiniteLoopSolvedCount}/3");
-        }else if(_infiniteLoopSolvedCount == 3){
+        }else if(_infiniteLoopSolvedCount == 5){
             UpdateObjectState(stairsPuzzleID, true);
         }
             

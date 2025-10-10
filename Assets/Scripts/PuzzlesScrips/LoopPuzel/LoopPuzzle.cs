@@ -8,6 +8,8 @@ public class LoopPuzzle : MonoBehaviour, IObserver
     public List<GameObject> bloodParticleSystems = new List<GameObject>();
     public bool puzzleStarted = false;
     public GameObject shara;
+    public GameObject clockEmiterRef;
+    public GameObject clockLieEmiterRef;
     private bool isPuzzleTruthful = true;
     private bool puzzleSolved = false;
 
@@ -27,6 +29,7 @@ public class LoopPuzzle : MonoBehaviour, IObserver
 
     public bool writingLie = false;
     public bool handLie = false;
+    public bool clockLie = false;
 
 
     void Start()
@@ -52,15 +55,21 @@ public class LoopPuzzle : MonoBehaviour, IObserver
             
             // Set initial solved state based on truthfulness
             puzzleSolved = !isPuzzleTruthful;
-            if(!isPuzzleTruthful)
+            if (!isPuzzleTruthful)
             {
                 SelectRandomLieType();
-                if(paintingLie)
+                if (paintingLie)
                     SetPaintingsActive(isPuzzleTruthful);
-                if(writingLie) 
+                if (writingLie)
                     lieWriting.SetActive(!isPuzzleTruthful);
-                if(handLie) 
+                if (handLie)
                     creepyHandRef.SetActive(!isPuzzleTruthful);
+                if (clockLie)
+                {
+                    clockEmiterRef.SetActive(isPuzzleTruthful);
+                    clockLieEmiterRef.SetActive(!isPuzzleTruthful);
+                }
+                        
             }
 
         }
@@ -91,10 +100,11 @@ public class LoopPuzzle : MonoBehaviour, IObserver
             () => bloodLie = true,      // Index 0
             () => paintingLie = true,   // Index 1
             () => writingLie = true,    // Index 2
-            () => handLie = true        // Index 3
+            () => handLie = true,        // Index 3
+            () => clockLie = true
         };
 
-        string[] lieNames = { "BLOOD", "PAINTINGS", "WRITING", "HAND" };
+        string[] lieNames = { "BLOOD", "PAINTINGS", "WRITING", "HAND", "BROKEN_CLOCK" };
 
         // Randomly select one option
         int randomIndex = GameStateManager.Instance.GetNextLieIndex();

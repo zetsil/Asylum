@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PuzzleTable.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Classroom Chapel hall.unity
+    path: Assets/Scenes/floor_01.unity
     guid: b04183930602f964fbbbf834ab018ea6
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

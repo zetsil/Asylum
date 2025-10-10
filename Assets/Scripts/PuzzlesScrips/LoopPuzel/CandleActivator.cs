@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(CandleFlicker))]
 public class CandleActivator : MonoBehaviour
 {
-    public enum ActivationCondition { One = 1, Two = 2, Three = 3 }
+    public enum ActivationCondition { One = 1, Two = 2, Three = 3, Four = 4, Five=5 }
     public ActivationCondition activateWhenSolved = ActivationCondition.One;
 
     [Header("Child Components")]
