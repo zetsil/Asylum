@@ -128,7 +128,6 @@ GameObject:
   m_Component:
   - component: {fileID: 26538123}
   - component: {fileID: 26538122}
-  - component: {fileID: 26538121}
   - component: {fileID: 26538120}
   m_Layer: 0
   m_Name: TransitionCamera
@@ -181,14 +180,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &26538121
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26538119}
-  m_Enabled: 1
 --- !u!20 &26538122
 Camera:
   m_ObjectHideFlags: 0
@@ -361,7 +352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2996119775627384186, guid: bd4de0ac96ed9c331ad71456781519a3, type: 3}
+  m_Sprite: {fileID: 6697558667110343378, guid: 407c9050f4de3ea3c93285bc8642db76, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DarkRoom_0: 4627122794221362472
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

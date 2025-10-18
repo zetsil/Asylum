@@ -38,6 +38,8 @@ public class GameStateManager : MonoBehaviour
     public string stairsStartPuzzelID = "stairStart"; 
     public string clasroomKeyID = "ClassroomKey";
     private int _infiniteLoopSolvedCount = 0;
+
+    private int _darkRoomPuzzleCount = 0;
     private Queue<int> _lieTypeQueue = new Queue<int>();
     private int _lastLieIndex = -1;
 
@@ -126,6 +128,16 @@ public class GameStateManager : MonoBehaviour
         return currentState;
     }
 
+    public int GetCounterDarkRoom()
+    {
+        return _darkRoomPuzzleCount;
+    }
+
+    public void incrementDarkRoom()
+    {
+        _darkRoomPuzzleCount++;
+    }
+
 
     public int GetCurrentLoopCount()
     {
@@ -141,16 +153,15 @@ public class GameStateManager : MonoBehaviour
         {
             _infiniteLoopSolvedCount++;
 
-            if(_infiniteLoopSolvedCount == 5){
-                UpdateObjectState(stairsPuzzleID, true);
-            }
             // PlayerPrefs.SetInt("InfiniteLoopSolvedCount", _infiniteLoopSolvedCount);
             // PlayerPrefs.Save();
             // _infiniteLoopSolvedCount++;
             Debug.Log($"Infinite loop solved count: {_infiniteLoopSolvedCount}/3");
-        }else if(_infiniteLoopSolvedCount == 5){
-            UpdateObjectState(stairsPuzzleID, true);
         }
+        // else if (_infiniteLoopSolvedCount == 5)
+        // {
+        //     UpdateObjectState(stairsPuzzleID, true);
+        // }
             
         
     }

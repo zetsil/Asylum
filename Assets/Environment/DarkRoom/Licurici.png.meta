@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1c1fd6b5da9ae9689a7ab5e0ed81dd22
+guid: 742db50cdf2db10558081e85412a789a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7376410579475766104
-    second: suportLumanari_0
+      213: -408982565001415952
+    second: Licurici_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: suportLumanari_0
+      name: Licurici_0
       rect:
         serializedVersion: 2
-        x: 65
-        y: 70
-        width: 528
-        height: 42
+        x: 571
+        y: 956
+        width: 1328
+        height: 1609
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8a4e9ece8a9b1a990800000000000000
-      internalID: -7376410579475766104
+      spriteID: 0f233c52680035af0800000000000000
+      internalID: -408982565001415952
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      suportLumanari_0: -7376410579475766104
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

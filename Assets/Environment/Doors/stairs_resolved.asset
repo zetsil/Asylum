@@ -18,7 +18,7 @@ MonoBehaviour:
     doorID: stairs
     spawnOffset: {x: 2, y: 0, z: 0}
   toDoor:
-    sceneName: Classroom Chapel hall
+    sceneName: floor_01
     doorID: stairs
     spawnOffset: {x: 2, y: 0, z: 0}
   locked: 0

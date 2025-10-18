@@ -5,6 +5,7 @@ using System.Collections;
 public class SceneTransitionManager : MonoBehaviour
 {
     private static SceneTransitionManager _instance;
+    private bool _isStrangeDoor = false;
     public static SceneTransitionManager Instance
     {
         get
@@ -12,7 +13,7 @@ public class SceneTransitionManager : MonoBehaviour
             if (_instance == null)
             {
                 _instance = FindObjectOfType<SceneTransitionManager>();
-                
+
                 // #if UNITY_EDITOR
                 if (_instance == null && Application.isPlaying)
                 {
@@ -27,7 +28,7 @@ public class SceneTransitionManager : MonoBehaviour
     }
 
     private DoorData _currentTransition;
-    private bool _isTransitioning = false; // Flag to track transition state
+    public bool isTransitioning = false; // Flag to track transition state
 
     
     private void Awake()
@@ -57,7 +58,7 @@ public class SceneTransitionManager : MonoBehaviour
             return;
         }
 
-        if (_isTransitioning)
+        if (isTransitioning)
         {
             Debug.LogWarning("Scene transition already in progress - ignoring request");
             return;
@@ -72,36 +73,77 @@ public class SceneTransitionManager : MonoBehaviour
         StartCoroutine(LoadSceneAsync(sceneName));
     }
     
+    public void LoadStrangeDoorScene(string sceneName)
+    {
+        if (!Application.isPlaying || isTransitioning)
+        {
+            Debug.LogWarning("Transition already in progress or not in play mode.");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            Debug.LogError("Invalid scene name for Strange Door.");
+            return;
+        }
+
+        // Setează flag-ul pentru a indica tranziția specială
+        _isStrangeDoor = true;
+        
+        // Rulează corutina standard de încărcare
+        StartCoroutine(LoadSceneAsync(sceneName));
+    }
+    
     private IEnumerator LoadSceneAsync(string sceneName)
     {
-        _isTransitioning = true; // Set flag at start of transition
+        isTransitioning = true;
+        bool wasStrangeDoor = _isStrangeDoor;
         
         try
         {
-            // Step 1: Load Transition scene additively
+            // Step 1 & 2: Load Transition scene and get components (OK)
             AsyncOperation transitionLoad = SceneManager.LoadSceneAsync("Transition", LoadSceneMode.Additive);
             yield return new WaitUntil(() => transitionLoad.isDone);
 
-            // Step 2: Get the TransitionController
             GameObject transitionRoot = GameObject.Find("TransitionCanvas");
             TransitionController transition = transitionRoot.GetComponent<TransitionController>();
             Camera transitionCamera = GameObject.Find("TransitionCamera").GetComponent<Camera>();
-            transitionCamera.gameObject.SetActive(false);
-
-            // Step 3: Fade In (black screen hides current scene)
+            
+            
+            // NOU: Step A: Pregatirea: Activeaza Camera de Tranzitie
+            // Camera veche (din scena descarcata) devine inactiva automat.
+            transitionCamera.gameObject.SetActive(true);
+            
+            // Step 3: Fade In (ecranul devine negru afisat de Camera NOUA)
+            // Daca scena de tranzitie incepe cu imaginea transparenta, acest pas este esential.
             yield return transition.StartCoroutine(transition.FadeIn(1f));
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f); // Scurteaza putin pauza
 
-            // Step 4: Unload previous scene (except Transition)
-            Scene activeScene = SceneManager.GetActiveScene();
-            if (activeScene.name != "Transition") {
-                yield return SceneManager.UnloadSceneAsync(activeScene);
+
+            // NOU: LOGICA FLASH-ULUI (Se întâmplă pe ecranul Negru, ÎNAINTE de a descărca vechea scenă)
+            // Nu mai avem camera veche care sa incurce. Camera de Tranziție afișează negrul.
+            if (wasStrangeDoor)
+            {
+                // FlashWhite transforma ecranul Alb, apoi il lasa Negru.
+                yield return transition.StartCoroutine(transition.FlashWhite(0.15f));
             }
 
-            // Step 5: Load the new scene additively
+
+            // Step 4: Unload previous scene (ACUM e sigur, Camera de Tranzitie e activa)
+            Scene activeScene = SceneManager.GetActiveScene();
+            if (activeScene.name != "Transition")
+            {
+                // Camera veche este descarcata, dar Camera de Tranzitie preia controlul.
+                yield return SceneManager.UnloadSceneAsync(activeScene); 
+            }
+
+            // Step 5: Load the new scene additively (RĂMÂNE LA FEL)
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             asyncLoad.allowSceneActivation = false;
-            transitionCamera.gameObject.SetActive(true);
+            
+            // NU MAI E NEVOIE de transitionCamera.gameObject.SetActive(true) AICI
+            // deoarece a fost activata la Step A.
+            
             while (asyncLoad.progress < 0.9f)
             {
                 float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
@@ -112,23 +154,25 @@ public class SceneTransitionManager : MonoBehaviour
             asyncLoad.allowSceneActivation = true;
             yield return new WaitUntil(() => asyncLoad.isDone);
             yield return null;
-            transitionCamera.gameObject.SetActive(false);
+            
+            // NOU: Dezactivarea camerei de tranzitie are loc DUPA ce scena e activa.
+            transitionCamera.gameObject.SetActive(false); 
+            
             PositionPlayer();
-            // Step 6: Set the new scene as active
+            
+            // Step 6 & 7: Set active scene and Fade Out (OK)
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-
-            // Step 7: Fade Out (reveal new scene)
             yield return transition.StartCoroutine(transition.FadeOut(1f));
 
-            // Step 8: Unload transition scene
+            // Step 8: Unload transition scene (OK)
             yield return SceneManager.UnloadSceneAsync("Transition");
         }
         finally
         {
-            _isTransitioning = false; // Ensure flag is reset even if something fails
+            isTransitioning = false;
+            _isStrangeDoor = false;
         }
     }
-
 
 
     

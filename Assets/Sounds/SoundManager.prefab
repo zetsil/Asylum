@@ -115,3 +115,17 @@ MonoBehaviour:
     loop: 0
     hasPlayed: 0
     dedicatedSource: {fileID: 0}
+  - eventName: bell
+    soundClip: {fileID: 8300000, guid: db9fb44616b037ddb8467ca1622bfb7f, type: 3}
+    volume: 0.32
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}
+  - eventName: winBell
+    soundClip: {fileID: 8300000, guid: 174566e41a3bef0eba37dff1714dc640, type: 3}
+    volume: 0.33
+    playOnlyOnce: 0
+    loop: 0
+    hasPlayed: 0
+    dedicatedSource: {fileID: 0}

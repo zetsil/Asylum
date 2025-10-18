@@ -6,6 +6,8 @@ public class CandleActivator : MonoBehaviour
 {
     public enum ActivationCondition { One = 1, Two = 2, Three = 3, Four = 4, Five=5 }
     public ActivationCondition activateWhenSolved = ActivationCondition.One;
+    private  string stairsPuzzleID = "StairsPuzzle";
+
 
     [Header("Child Components")]
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D candleLight; // Assign in Inspector
@@ -35,7 +37,17 @@ public class CandleActivator : MonoBehaviour
         if (GameStateManager.Instance == null) return;
 
         bool shouldActivate = GameStateManager.Instance.GetCurrentLoopCount() >= (int)activateWhenSolved;
+        bool lastCandel = shouldActivate && GameStateManager.Instance.GetCurrentLoopCount() == (int)activateWhenSolved;
         SetCandleState(shouldActivate);
+
+        if (lastCandel && (int)activateWhenSolved == 5 && !GameStateManager.Instance.GetObjectState(stairsPuzzleID))
+        {
+            SoundManager.PlayEventSound("winBell");
+            GameStateManager.Instance.UpdateObjectState(stairsPuzzleID, true);
+        }
+
+        if(lastCandel && !GameStateManager.Instance.GetObjectState(stairsPuzzleID))
+            SoundManager.PlayEventSound("bell");
 
         Debug.Log($"Candle {gameObject.name} - " +
                 $"Active: {shouldActivate} " +
