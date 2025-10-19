@@ -27,7 +27,7 @@ public class FireflyOrbitTracker : MonoBehaviour
     private bool orbiting = false;
     private float noiseOffsetX;
     private float noiseOffsetY;
-    private Vector3 initialScale;
+    public Vector3 initialScale;
 
     void Start()
     {
@@ -144,5 +144,18 @@ public class FireflyOrbitTracker : MonoBehaviour
     {
         float pulse = Mathf.Sin(Time.time * 4f + noiseOffsetX) * 0.1f + 1f;
         transform.localScale = initialScale * pulse;
+    }
+
+    // Adaugă această metodă publică oriunde în clasa FireflyOrbitTracker:
+
+    public void DisableOrbitAndPrepareForScatter()
+    {
+        // Dezactivează toate loop-urile de mișcare și orbită.
+        orbiting = false;
+        transitioning = false;
+        // Dezactivează acest script, lăsând GameObject-ul activ.
+        enabled = false; 
+        
+        // Licuriciul este acum gata să fie controlat de FireflyScatterManager.
     }
 }

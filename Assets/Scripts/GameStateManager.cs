@@ -40,6 +40,7 @@ public class GameStateManager : MonoBehaviour
     private int _infiniteLoopSolvedCount = 0;
 
     private int _darkRoomPuzzleCount = 0;
+    public bool isDarkRoomPuzzleResolved = false;
     private Queue<int> _lieTypeQueue = new Queue<int>();
     private int _lastLieIndex = -1;
 
@@ -135,7 +136,14 @@ public class GameStateManager : MonoBehaviour
 
     public void incrementDarkRoom()
     {
-        _darkRoomPuzzleCount++;
+        if (isDarkRoomPuzzleResolved) return;
+        
+        if (_darkRoomPuzzleCount == 5)
+        {
+            isDarkRoomPuzzleResolved = true;
+            return;
+        }
+            _darkRoomPuzzleCount++;
     }
 
 

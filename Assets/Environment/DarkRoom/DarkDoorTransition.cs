@@ -12,13 +12,10 @@ public class DarkDoorTransition : MonoBehaviour, IObserver
     private Emitter playerEmitter;
     private bool isPlayerInTrigger;
 
-    private bool isTransitionStarted = false;
-
     private void Start()
     {
 
         GameObject player = GameObject.FindWithTag("Player");
-        isTransitionStarted = false;
         if (player != null)
         {
             playerEmitter = player.GetComponent<Emitter>();
@@ -47,41 +44,26 @@ public class DarkDoorTransition : MonoBehaviour, IObserver
         int currentCount = GameStateManager.Instance.GetCounterDarkRoom();
         
 
-        // 2. Logica de puzzle (Numarul de Fantome Albe)
-        if (currentCount >= requiredEntryCount)
-        {
-            // Aici va fi cutscene-ul de unire a punctelor si obtinerea Cheii Finale
-            Debug.Log($"VIDUL S-A UMPLUT! Se declanseaza cutscene-ul final.");
-            
-            // TODO: Incarca Scena/Corutina Cutscene-ului Final
-            // Dupa cutscene, incarca urmatoarea scena cheie
-            
-            // Pentru demo, oprim aici si aratam un mesaj:
-            Debug.LogWarning("Cutscene-ul final de unire trebuie declansat aici!");
-            // SceneTransitionManager.Instance.LoadScene("FinalKeyScene");
-        }
-        else
-        {
+        
 
-            // Tranzitia catre Vidul Negru
-            Debug.Log($"Intrare in Vid: {currentCount}/{requiredEntryCount}. Un punct alb a aparut.");
-            GameStateManager.Instance.incrementDarkRoom();
+        // Tranzitia catre Vidul Negru
+        Debug.Log($"Intrare in Vid: {currentCount}/{requiredEntryCount}. Un punct alb a aparut.");
+        GameStateManager.Instance.incrementDarkRoom();
 
-            // 3. Setarea datelor de tranzitie
-            SceneTransitionManager.Instance.SetTransitionData(
-                new DoorData(
-                    SceneManager.GetActiveScene().name,
-                    doorID,
-                    targetSceneName
-                )
-            );
+        // 3. Setarea datelor de tranzitie
+        SceneTransitionManager.Instance.SetTransitionData(
+            new DoorData(
+                SceneManager.GetActiveScene().name,
+                doorID,
+                targetSceneName
+            )
+        );
 
-            // 4. Apelarea FUNCTIEI SPECIALE
-            SceneTransitionManager.Instance.LoadStrangeDoorScene(targetSceneName);
-        }
+        // 4. Apelarea FUNCTIEI SPECIALE
+        SceneTransitionManager.Instance.LoadStrangeDoorScene(targetSceneName);
+        
         
         SoundManager.PlayEventSound("Open_Door"); // Sunetul usii
-        isTransitionStarted = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
